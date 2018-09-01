@@ -1,0 +1,50 @@
+.myShare {
+  .container {
+    .title {
+      i {
+        padding-right: 4px;
+      }
+    }
+
+    .main {
+      width: 99%;
+      position: unset;
+      min-height: 300px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .content {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .course {
+          display: flex;
+          align-items: center;
+          margin: 20px 0;
+          cursor: pointer;
+          p {
+            text-align: center;
+            padding-left: 20px;
+            margin-right: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .noData {
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+      }
+    }
+  }
+}

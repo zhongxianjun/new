@@ -1,0 +1,60 @@
+.side-bar {
+    position: fixed; right: 50px; bottom: 20px; z-index: 90;
+    height: 162px;
+    animation: opacity 0.4s;
+    @keyframes opacity {
+      0% { opacity: 0;}
+      100% { opacity: 1; }
+    }
+
+    .pk_gotop {
+        cursor: pointer;
+        z-index: 999;
+        span {
+          display: block;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .gotop_icon {
+          width: 61px;
+          height: 48px;
+          display: block;
+          margin-top: 6px;
+          font-size: 14px;
+          line-height: 35px;
+          text-align: center;
+          background-color: #fff;
+          color: #a5a5a5;
+        }
+        .gotop_icon:hover {
+          background-position-y: -48px;
+          background-color: #2273c0;
+          color: #fff;
+        }
+        .goTop_phone {
+          position: relative;
+          background: url("~@/images/gongneng.png") no-repeat 0 0;
+          position: relative;
+          transition: background-position 0.4s;
+
+          &:hover {
+              .qr {
+                  display: block;
+              }
+          }
+
+          .qr {
+              position: absolute; right: 70px;
+              display: none;
+          }
+        }
+        .goTop_callKF {
+          background: url("~@/images/gongneng.png") no-repeat -61px 0;
+          transition: background-position 0.4s;
+        }
+        .goTop_back {
+          background: url("~@/images/gongneng.png") no-repeat -122px 0;
+          transition: background-position 0.4s;
+        }
+    }
+}

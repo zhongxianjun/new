@@ -1,0 +1,9 @@
+#errors-conatiner-box {
+  padding: 20px 40px;
+}
+#errors-conatiner-box #online-errors .left-box {
+  font-size: 14px;
+}
+#errors-conatiner-box #chapter-errors .left-box {
+  font-size: 14px;
+}

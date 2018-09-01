@@ -1,0 +1,161 @@
+.login{
+    width: 100%;
+    height: 100%;
+    background-color:#3787fe;
+    background-image: url('https://market.ppkao.com/img/pc/login_bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    &-con{
+        position: absolute;
+        right: 100px;
+        top: 50%;
+        background: #fff;
+        width: 380px;
+        overflow: hidden;
+        &-header{
+            font-size: 16px;
+            font-weight: 300;
+            text-align: center;
+            padding: 30px 0;
+        }
+        .safeTips{
+            color: #ff615b;
+            span{
+                color: #379BE7;
+                cursor: pointer;
+            }
+        }
+        .form-con{
+            padding: 10px 0 0;
+        }
+        .login-tip{
+            width: 100%;
+            font-size: 10px;
+            display:flex;
+            justify-content:space-between;
+            color: #c3c3c3;
+            a{
+                width: 100%;
+                cursor: default;
+                span{
+                    cursor: pointer;
+                }
+            }
+            .right{
+                text-align: right;
+            }
+        }
+
+        .retrievePwd{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            z-index: 6;
+        }
+    }
+    .ivu-input{
+        height:42px;
+    }
+    .ivu-col-span-3{
+        margin: 0 4px;
+    }
+}
+.title{
+    font-size:12px;
+    color:#666;
+}
+.three{
+    padding-top:14px;
+}
+.ivu-btn{
+    line-height:2.3;
+}
+
+.form-con{
+    position: relative;
+    overflow: hidden;
+    .weixin{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        transition: all .75s;
+        width: 348px;
+        min-height: 189px;
+        background-color: #fff;
+        .close{
+            width: 32px;
+            min-height: 32px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            margin-top: -32px;
+            text-align: center;
+            cursor: pointer;
+            i{
+                display: inline-block;
+                margin-top: 8px;
+            }
+        }
+        img{
+            width: 120px;
+            height: 120px;
+            margin-left: 114px;
+            margin-top: 20px;
+            display: block;
+            cursor: pointer;
+        }
+        p{
+            font-size: 16px;
+            color: #000;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+        .loading{
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            left: 114px;
+            top: 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            .ivu-spin{
+                margin: 0 auto;
+            }
+        }
+        .refresh{
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            left: 114px;
+            top: 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, .8);
+            display: flex;
+            align-items: center;
+            i{
+                display: inline-block;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .verificationCode{
+        width: 348px;
+        transition: all .35s;
+        .ivu-form-item-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .verification{
+                width: 240px;
+            }
+            .btn{
+                width: 92px;
+                border: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+.side-bar {
+  position: fixed;
+  right: 50px;
+  bottom: 20px;
+  z-index: 90;
+  height: 162px;
+  animation: opacity 0.4s;
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.side-bar .pk_gotop {
+  cursor: pointer;
+  z-index: 999;
+}
+.side-bar .pk_gotop span {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.side-bar .pk_gotop .gotop_icon {
+  width: 61px;
+  height: 48px;
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #fff;
+  color: #a5a5a5;
+}
+.side-bar .pk_gotop .gotop_icon:hover {
+  background-position-y: -48px;
+  background-color: #2273c0;
+  color: #fff;
+}
+.side-bar .pk_gotop .goTop_phone {
+  background: url("~@/images/gongneng.png") no-repeat 0 0;
+  position: relative;
+  transition: background-position 0.4s;
+}
+.side-bar .pk_gotop .goTop_phone:hover .qr {
+  display: block;
+}
+.side-bar .pk_gotop .goTop_phone .qr {
+  position: absolute;
+  right: 70px;
+  display: none;
+}
+.side-bar .pk_gotop .goTop_callKF {
+  background: url("~@/images/gongneng.png") no-repeat -61px 0;
+  transition: background-position 0.4s;
+}
+.side-bar .pk_gotop .goTop_back {
+  background: url("~@/images/gongneng.png") no-repeat -122px 0;
+  transition: background-position 0.4s;
+}

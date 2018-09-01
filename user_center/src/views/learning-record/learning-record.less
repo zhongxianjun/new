@@ -1,0 +1,95 @@
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.record-list-container-box {
+  #record-list-box {
+      padding: 20px 40px;
+      background-color: #fff;
+  }
+}
+
+.page-box {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #fff;
+  .ivu-page {
+      display: inline-box;
+  }
+}
+
+#record-list {
+  padding-left: 40px;
+  background-color: #fff;
+  line-height: 24px;
+
+  .ivu-row-flex {
+    padding: 20px 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .left-box {
+      font-size: 14px;
+  }
+
+  .middle-box {
+      h2 {
+        font-size: 14px; font-weight: bold;
+      }
+      h3 {
+        font-size: 12px; color: #b3b3b3;
+      }
+  }
+
+  .right-box {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      font-size: 14px;
+
+      .left {
+
+        h2 {
+          white-space: nowrap;
+          span {
+            color: #ed8a16;
+          }
+        }
+        h3 {
+          white-space: nowrap;
+          span {
+            color: #cf2626;
+          }
+        }
+      }
+      .middle {
+        margin-left: 10px;
+        h2 {
+          white-space: nowrap;
+        }
+        h3 {
+          white-space: nowrap;
+        }
+        h2:hover, h3:hover {
+          color: #2d8cf0; cursor: pointer;
+        }
+      }
+      .right {
+        align-self: center;
+        margin-left: 10px;
+        color: #a5a5a5; font-size: 22px;
+        &:hover {
+          color: #ff1e29; cursor: pointer;
+        }
+      }
+  }
+  
+
+  &.online-exam {
+    .container-box {
+
+        .left-box {
+            
+        }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.common-problems {
+  position: relative;
+}
+.common-problems .ivu-tabs-tabpane .problems-list:nth-of-type(n+2) {
+  margin-top: 20px;
+}
+.common-problems .ivu-tabs-tabpane .problems-list h2 {
+  font-size: 18px;
+}
+.common-problems .ivu-tabs-tabpane .problems-list .content {
+  margin-top: 5px;
+  line-height: 1.8;
+}
+.contact-us {
+  display: flex;
+  justify-content: center;
+}
+.contact-us .jieshao {
+  padding: 49px 54px 66px 45px;
+  background: url('http://www.csqiuzhi.com/images/contact/jianjiebg.png') no-repeat right top #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+.contact-us .jieshao h1 {
+  font-size: 16px;
+  color: #1cbe59;
+  line-height: 60px;
+}
+.contact-us .jieshao > i {
+  display: block;
+  width: 62px;
+  height: 1px;
+  background-color: #eee;
+}
+.contact-us .jieshao > p {
+  line-height: 21px;
+  padding-top: 13px;
+  color: #a5a5a5;
+}
+.contact-us .jieshao ul li {
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+}
+.contact-us .jieshao ul li .info {
+  padding-left: 15px;
+}
+.contact-us .jieshao ul li .info h2 {
+  font-size: 16px;
+  line-height: 28px;
+}
+.contact-us .jieshao ul li .info p {
+  color: #a5a5a5;
+  line-height: 30px;
+}
+.contact-us .jieshao ul li .icon {
+  width: 40px;
+  font-size: 32px;
+}

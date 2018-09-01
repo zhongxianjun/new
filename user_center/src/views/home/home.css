@@ -1,0 +1,113 @@
+.user-infor {
+  height: 135px;
+}
+.avator-img {
+  display: block;
+  width: 80%;
+  max-width: 100px;
+  height: auto;
+}
+.card-user-infor-name {
+  font-size: 2em;
+  color: #2d8cf0;
+}
+.card-title {
+  color: #abafbd;
+}
+.group {
+  text-align: center;
+}
+.demo-carousel img {
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.days {
+  color: #2d8cf0;
+}
+.made-child-con-middle {
+  height: 100%;
+}
+.to-do-list-con {
+  height: 145px;
+  overflow: auto;
+}
+.to-do-item {
+  padding: 2px;
+}
+.infor-card-con {
+  height: 100px;
+}
+.infor-card-icon-con {
+  height: 100%;
+  color: white;
+  border-radius: 3px 0 0 3px;
+}
+.map-con {
+  height: 305px;
+}
+.map-incon {
+  height: 100%;
+}
+.data-source-row {
+  height: 200px;
+}
+.line-chart-con {
+  height: 150px;
+}
+.kj-info {
+  background: url("~@/images/icon_sass.png") no-repeat;
+  width: 80px;
+  height: 72px;
+  display: block;
+  margin: 10px 0 16px 0;
+}
+.title {
+  margin-top: 10px;
+}
+.tips {
+  width: 70%;
+  text-align: center;
+  margin: 30px 0;
+}
+.zjlx {
+  background-position: 6px -153px;
+}
+.day {
+  background-position: 6px 0;
+}
+.card-info {
+  flex-direction: column;
+  align-items: center;
+}
+.demo-auto-complete-item {
+  padding: 4px 0;
+  border-bottom: 1px solid #f6f6f6;
+}
+.demo-auto-complete-group {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+.demo-auto-complete-group span {
+  color: #666;
+  font-weight: bold;
+}
+.demo-auto-complete-group a {
+  float: right;
+}
+.search {
+  padding: 30px 0;
+}
+.demo-auto-complete-count {
+  float: right;
+  color: #999;
+}
+.demo-auto-complete-more {
+  display: block;
+  margin: 0 auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 12px;
+}

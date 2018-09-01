@@ -1,0 +1,84 @@
+.money-container-box .ivu-card {
+  position: initial;
+}
+.money-container-box .result-box {
+  padding: 20px 30px;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: center;
+}
+.money-container-box .result-box .record-box .record .item {
+  padding: 10px 0;
+}
+.money-container-box .result-box .record-box .record .item .time {
+  font-size: 18px;
+}
+.money-container-box .result-box .coupon-box .coupon {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.money-container-box .result-box .coupon-box .coupon .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 20px 0 0;
+  width: 248px;
+  height: 122px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f4d64b, #fcb61e);
+  line-height: 1;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top {
+  display: flex;
+  justify-content: center;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div {
+  display: flex;
+  align-items: center;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div .left {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div .left span {
+  font-size: 88px;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div .right {
+  margin-left: 10px;
+  color: #fff;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div .right h2 {
+  font-size: 24px;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .top > div .right h3 {
+  margin-top: 4px;
+  font-size: 16px;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .bottom {
+  display: flex;
+  justify-content: center;
+}
+.money-container-box .result-box .coupon-box .coupon .item > div .bottom p {
+  padding: 0 15px;
+  line-height: 20px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #fd6d3b;
+  font-size: 12px;
+}
+.money-container-box .result-box .coupon-box .no-coupon {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+.page-box {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #fff;
+}
+.page-box .ivu-page {
+  display: inline-box;
+}

@@ -1,0 +1,83 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 1em;
+}
+.record-list-container-box #record-list-box {
+  padding: 20px 40px;
+  background-color: #fff;
+}
+.page-box {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #fff;
+}
+.page-box .ivu-page {
+  display: inline-box;
+}
+#record-list {
+  padding-left: 40px;
+  background-color: #fff;
+  line-height: 24px;
+}
+#record-list .ivu-row-flex {
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+#record-list .left-box {
+  font-size: 14px;
+}
+#record-list .middle-box h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+#record-list .middle-box h3 {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+#record-list .right-box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14px;
+}
+#record-list .right-box .left h2 {
+  white-space: nowrap;
+}
+#record-list .right-box .left h2 span {
+  color: #ed8a16;
+}
+#record-list .right-box .left h3 {
+  white-space: nowrap;
+}
+#record-list .right-box .left h3 span {
+  color: #cf2626;
+}
+#record-list .right-box .middle {
+  margin-left: 10px;
+}
+#record-list .right-box .middle h2 {
+  white-space: nowrap;
+}
+#record-list .right-box .middle h3 {
+  white-space: nowrap;
+}
+#record-list .right-box .middle h2:hover,
+#record-list .right-box .middle h3:hover {
+  color: #2d8cf0;
+  cursor: pointer;
+}
+#record-list .right-box .right {
+  align-self: center;
+  margin-left: 10px;
+  color: #a5a5a5;
+  font-size: 22px;
+}
+#record-list .right-box .right:hover {
+  color: #ff1e29;
+  cursor: pointer;
+}
