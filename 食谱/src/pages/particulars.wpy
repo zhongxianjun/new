@@ -1,0 +1,360 @@
+<template>
+    <view class="particulars">
+      <view class="content" wx:if="{{!noDataState}}">
+        <view class="container">
+          <view class="headerBg">
+          </view>
+          <view class="imgBox">
+              <image src="{{info.ImgUrl}}" mode="widthFix">
+          </view>
+        </view>
+          
+        <view class='title'>
+          <view class='name'><view class="name1">{{info.Title}}</view><view class="name2">{{info.EnglishName}}</view></view>
+          <view class="canEat">
+            <view>
+              <image
+               src="../assets/images/type_{{info.EdibleStatus=='放心吃'?'1':''}}{{info.EdibleStatus=='少量吃'?'2':''}}{{info.EdibleStatus=='谨慎吃'?'3':''}}.png"
+               wx:if="{{info.EdibleStatus=='放心吃'?true:''}}{{info.EdibleStatus=='少量吃'?true:''}}{{info.EdibleStatus=='谨慎吃'?true:''}}"
+              />
+            </view>
+            <view class="text {{info.EdibleStatus=='放心吃'?'green':''}} {{info.EdibleStatus=='少量吃'?'yellow':''}} {{info.EdibleStatus=='谨慎吃'?'red':''}}">
+              {{info.EdibleStatus == '该病症不详'? '': info.EdibleStatus}}
+            </view>
+          </view>
+        </view>
+        <view class='xian'></view>
+        <view class="headline">营养成分（100克含量）</view>
+        <view class="nutrition">
+            <view class="text"><view class="name">脂肪</view>{{info.Fat}}g</view>
+            <view class="text"><view class="name">嘌呤</view>{{info.Purine}}mg</view>
+            <view class="text"><view class="name">热量</view>{{info.Fire}}kcal</view>
+            <view class="text"><view class="name">碳水化合物</view>{{info.Carbohydrate}}g</view>
+            <view class="text"><view class="name">蛋白质</view>{{info.Protein}}g</view>
+            <view class="text"><view class="name">膳食纤维</view>{{info.Dietaryfiber}}g</view>
+        </view>
+        <view class='xian'></view>
+        <view class="headline">食物评价</view>
+        <view class="evaluate">{{info.Evaluate}}</view>
+        <view class='xian'></view>
+        <view class="headline">{{disease.title}}患者怎么吃</view>
+        <view class="evaluate">{{info.Eatingmethod?info.Eatingmethod: '暂无吃法介绍哟~'}}</view>
+        <view class='xian'></view>
+        <view class="headline">食用宜忌</view>
+        <view class="proper">
+          <view class="suitable">
+          <view class="yi quan">宜</view>
+          <view class="text">{{info.SuitablePopulation}}</view>
+        </view>
+        <view class="suitable">
+          <view class="ji quan">忌</view>
+          <view class="text">{{info.UnfitForTheCrowd}}</view>
+        </view>
+        </view>
+        <view class='xian'></view>
+        <view class="headline">搭配宜忌</view>
+        <view class="match">
+          <view class="suitable">
+          <view class="yi quan">宜</view>
+          <view class="text">
+            <view class='tit'>{{info.Collocation[0].english?info.Title+'+':'--'}}{{info.Collocation[0].english}}</view>
+            <view class='cont'>{{info.Collocation[0].status}}</view>
+          </view>
+        </view>
+        <view class="suitable">
+          <view class="ji quan">忌</view>
+          <view class='text'>
+            <view class='tit'>{{info.Collocation[1].english?info.Title+'+':'--'}}{{info.Collocation[1].english}}</view>
+            <view class='cont'>{{info.Collocation[1].status}}</view>
+          </view>
+        </view>
+        </view>
+
+      <!-- 分享组件 -->
+      <share></share>
+    </view>
+    
+    <noData wx:if="{{noDataState}}" @foodCallback="foodDetail"></noData>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import NoData from '../components/NoData';
+import share from '../components/share';
+
+import { urlencode } from 'wepy-urlencode';
+import { HTTP, NetworkType } from '../libs/util.js';
+import { Food } from '../libs/api.js';
+
+export default class Particulars extends wepy.page {
+  config = {
+    navigationBarTitleText: ''
+  };
+  components = {
+    noData: NoData,
+    share: share
+  };
+
+  data = {
+    disease: {},
+    info: {},
+    collocation: {},
+    noDataState: false,
+    options: {}
+  };
+
+  computed = {};
+
+  methods = {};
+
+  //食物详情 函数
+  async foodDetail(params) {
+    var { options, data, info, CloseCache } = params;
+
+    if (!data) {
+      var data = await Food(info, CloseCache);
+    }
+
+    if (data.S == 1) {
+      this.inter(false);
+
+      data.List.map((item, i) => {
+        if (item.ID == this.options.ID) {
+          wx.setNavigationBarTitle({
+            title: item.Title
+          });
+          this.info = item;
+          this.$apply();
+        }
+      });
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+
+    // console.log(data, '详--------情', this.info);
+  }
+
+  //网络状态 抓取 函数
+  inter(data) {
+    this.noDataState = data;
+    this.$apply();
+  }
+
+  events = {
+    foodCallback: data => {
+      this.foodDetail({ data: data });
+    }
+  };
+
+  onReady() {}
+
+  onLoad(options) {
+    this.options = options;
+    let len = options.title.length;
+    let Title;
+    if (len >= 4) {
+      Title = options.title.substring(0, 3);
+    } else {
+      Title = options.title;
+    }
+
+    // console.log(Title, '传过来的Title');
+
+    this.disease = this.$parent.globalData.disease;
+    const { ID } = this.disease;
+    Title = urlencode(Title, 'gbk');
+
+    this.foodDetail({
+      options,
+      data: '',
+      info: {
+        action: 'Get_EatablesInfo_ByDId',
+        cid: '',
+        title: Title,
+        did: ID,
+        page: '',
+        count: '',
+        type: ''
+      },
+      CloseCache: false
+    });
+  }
+}
+</script>
+
+<style lang="scss">
+.container {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  .headerBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 220rpx;
+    background: linear-gradient(to bottom, #01b9a1, #01d598);
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+  }
+  .imgBox {
+    position: relative;
+    z-index: 2;
+    width: 690rpx;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    image {
+      width: 100%;
+    }
+  }
+}
+.title {
+  display: flex;
+  margin: 0 auto;
+  width: 690rpx;
+  justify-content: space-between;
+  align-items: center;
+  height: 158rpx;
+  .name {
+    .name1 {
+      font-size: 48rpx;
+      color: #323232;
+    }
+    .name2 {
+      font-size: 24rpx;
+      color: #9bb3b0;
+      text-align: center;
+      margin-top: 18rpx;
+    }
+  }
+  .canEat {
+    font-size: 24rpx;
+    text-align: center;
+    image {
+      width: 72rpx;
+      height: 72rpx;
+    }
+    .green {
+      color: #01b9a1;
+    }
+    .yellow {
+      color: #f7aa3d;
+    }
+    .red {
+      color: #f73d3d;
+    }
+  }
+}
+.xian {
+  width: 690rpx;
+  height: 16rpx;
+  background-color: #f7f7f7;
+  margin: 0 auto;
+}
+.headline {
+  color: #01b9a1;
+  padding-top: 27rpx;
+  font-size: 24rpx;
+  width: 690rpx;
+  margin: 0 auto;
+}
+.nutrition {
+  width: 690rpx;
+  margin: 14rpx auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 28rpx;
+  color: #01b9a1;
+  .text {
+    width: 33.33%;
+    margin: 40rpx 0 20rpx 0;
+    text-align: center;
+    .name {
+      width: 100%;
+      font-size: 32rpx;
+      color: #323232;
+      padding-bottom: 21rpx;
+    }
+  }
+}
+.evaluate {
+  color: #323232;
+  width: 690rpx;
+  margin: 0 auto;
+  line-height: 48rpx;
+  font-size: 28rpx;
+  padding: 28rpx 0;
+}
+.proper {
+  width: 690rpx;
+  margin: 0 auto;
+  .suitable {
+    display: flex;
+    align-items: center;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    padding: 28rpx 0;
+    justify-content: flex-start;
+    .quan {
+      text-align: center;
+      line-height: 50rpx;
+      font-size: 24rpx;
+      border-radius: 25rpx;
+      color: #fff;
+      margin-right: 28rpx;
+      width: 50rpx;
+      height: 50rpx;
+    }
+    .yi {
+      background-color: #01b9a1;
+    }
+    .ji {
+      background-color: #6b6969;
+    }
+    .text {
+      width: 614rpx;
+    }
+  }
+}
+.match {
+  width: 690rpx;
+  margin: 0 auto;
+  .suitable {
+    display: flex;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    padding: 28rpx 0;
+    justify-content: space-between;
+    .quan {
+      text-align: center;
+      line-height: 50rpx;
+      font-size: 24rpx;
+      border-radius: 25rpx;
+      color: #ffffff;
+      margin-right: 28rpx;
+      width: 50rpx;
+      height: 50rpx;
+    }
+    .text {
+      width: 614rpx;
+    }
+    .yi {
+      background-color: #01b9a1;
+    }
+    .ji {
+      background-color: #6b6969;
+    }
+    .tit {
+      color: #01b9a1;
+      font-size: 32rpx;
+    }
+    .cont {
+      margin-top: 10rpx;
+    }
+  }
+}
+</style>

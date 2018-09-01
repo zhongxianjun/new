@@ -1,0 +1,417 @@
+<template>
+  <view class="stapleFood">
+    <searchInput></searchInput>
+    
+    <view class="main"  wx:if="{{!noDataState}}">
+      <view class='foodCategoryNav'>
+        <view class='foodCategory'>
+          <view class="content {{current==index?'active':''}}" wx:for="{{classArr}}" data-index="{{index}}" wx:key="{{index}}" @tap="switchActive({{item}})">
+            <text class='text'>{{item}}</text>
+            <text class='border'></text>
+          </view>
+        </view>
+
+        <categoriesShow :showState.sync="showState" :cur.sync="cur" :y.sync="y" :param="param" @getFoodList="getFoodList" @changeTitle="changeTitle"></categoriesShow>
+      </view>
+
+      <view class="main">
+        <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower" scroll-top="{{num}}">
+          <view class='foodList'>
+            <navigator wx:for="{{foodList.foodListArr}}" wx:key="{{index}}" url= "particulars?ID={{item.ID}}&title={{item.Title}}">
+              <view class='food'>
+                <image src='{{item.ImgUrl}}'>
+                <view class='text'>
+                  <view class='foodName'>{{item.Title}}</view>
+                  <text>嘌呤：{{item.Purine}}mg</text>
+                  <text>热量：{{item.Fire}}kcal</text>
+                </view>
+                <view class="tips {{item.EdibleStatus=='放心吃'?'green':''}} {{item.EdibleStatus=='少量吃'?'yellow':''}} {{item.EdibleStatus=='谨慎吃'?'red':''}}">
+                  <text>{{item.EdibleStatus}}</text>
+                </view>
+              </view>
+            </navigator>
+            <view class="noData" wx:if="{{noData.showStatus}}">
+              <image src='../assets/images/nodata.png' wx:if="{{noData.text == '暂无数据!'? true: false}}">
+              <text>{{noData.text}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    
+    <NoData wx:if="{{noDataState}}" @foodCallback="getFoodList"></NoData>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { urlencode } from 'wepy-urlencode';
+import { HTTP, NetworkType } from '../libs/util.js';
+import { Food } from '../libs/api.js';
+
+import SearchInput from '../components/searchInput';
+import CategoriesShow from '../components/categoriesShow';
+import NoData from '../components/NoData';
+
+export default class StapleFood extends wepy.page {
+  config = {
+    navigationBarTitleText: ''
+  };
+  components = {
+    searchInput: SearchInput,
+    categoriesShow: CategoriesShow,
+    NoData: NoData
+  };
+  data = {
+    //无数据组件的状态
+    noDataState: false,
+    //页面渲染
+    classArr: ['放心吃', '少量吃', '谨慎吃', '食物类别'],
+    current: 0,
+    num: 0,
+    foodList: {
+      foodListArr: [],
+      foodDataStatus: false
+    },
+    noData: {
+      //上拉加载的数据状态
+      showStatus: false,
+      text: '暂无更多数据...'
+    },
+    param: {
+      ID: 0,
+      type: '',
+      page: 1
+    },
+    //传给子组件的值
+    showState: false,
+    cur: 1, //当前食品类的ID值
+    y: -100
+  };
+
+  computed = {};
+
+  methods = {
+    //头部点击添加删除active类名
+    switchActive(item, e) {
+      this.current = e.currentTarget.dataset.index;
+      this.showState = false;
+      this.param.page = 1;
+
+      this.y = -100;
+
+      if (item !== '食物类别') {
+        if (this.num == 0) {
+          this.num = 1;
+        } else {
+          this.num = 0;
+        }
+
+        //初始化 数据调用结果的 状态
+        this.foodList.foodDataStatus = true;
+        this.noData.showStatus = false;
+
+        this.foodList.foodListArr = [];
+
+        item = urlencode(item, 'gbk');
+        this.param.type = item;
+        this.param.page = 1;
+
+        const { ID, type, page } = this.param;
+        // console.log(page, 'page页码');
+        this.getFoodList(
+          '',
+          {
+            action: 'Get_EatablesInfo_ByDId',
+            cid: this.cur,
+            title: '',
+            did: ID,
+            page: page,
+            count: 10,
+            type
+          },
+          false
+        );
+      } else {
+        this.showState = true;
+        this.y = 0;
+      }
+    },
+
+    //上拉加载
+    lower(e) {
+      let _this = this;
+      const { foodDataStatus } = this.foodList;
+      // console.log(foodDataStatus, _this.param.page);
+      if (!foodDataStatus) {
+        wx.showLoading({
+          title: 'loading...',
+          mask: true,
+          success: function() {
+            _this.param.page++;
+            _this.foodList.foodDataStatus = true;
+            _this.$apply();
+            const { ID, type, page } = _this.param;
+
+            _this.getFoodList(
+              '',
+              {
+                action: 'Get_EatablesInfo_ByDId',
+                cid: _this.cur,
+                title: '',
+                did: ID,
+                page: page,
+                count: 10,
+                type
+              },
+              false
+            );
+          }
+        });
+      }
+    }
+  };
+
+  async getFoodList(data, info, CloseCache) {
+    this.noData.showStatus = false;
+
+    const { page } = info;
+    if (!data) {
+      var data = await Food(info, CloseCache);
+    }
+    // console.log('主食类食物列表', data);
+
+    if (data.S == 1) {
+      this.inter(false);
+      if (page == 1) {
+        this.foodList.foodListArr = data.List;
+        this.$apply();
+      } else {
+        data.List.map((item, i) => {
+          this.foodList.foodListArr.push(item);
+          this.$apply();
+        });
+      }
+
+      // console.log('当前页码:', page, '最大页码:', data.PageMAX);
+      if (page == data.PageMAX) {
+        this.noData = {
+          showStatus: true,
+          text: '暂无更多数据...'
+        };
+        this.foodList.foodDataStatus = true;
+      } else if (page > data.PageMAX) {
+        this.noData = {
+          showStatus: true,
+          text: '暂无数据!'
+        };
+        this.foodList.foodDataStatus = true;
+      } else {
+        this.noData.showStatus = false;
+        this.foodList.foodDataStatus = false;
+      }
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+    this.$apply();
+  }
+
+  //网络状态 抓取 函数
+  inter(data) {
+    this.noDataState = data;
+    this.$apply();
+  }
+
+  //改变标题
+  changeTitle(title) {
+    wx.setNavigationBarTitle({
+      title: title
+    });
+  }
+
+  events = {
+    getFoodList: (info, CloseCache) => {
+      this.getFoodList('', info, CloseCache);
+    },
+    foodCallback: (data, info) => {
+      this.getFoodList(data, info);
+    },
+    changeTitle: title => {
+      this.changeTitle(title);
+
+      if (this.num == 0) {
+        this.num = 1;
+      } else {
+        this.num = 0;
+      }
+    }
+  };
+
+  onReady() {}
+
+  onLoad(options) {
+    //从首页跳转过来，接收传递过来的索引值，赋值给cur。
+    this.cur = parseInt(options.ID);
+    this.changeTitle(options.Title);
+
+    const globalData = this.$parent.globalData;
+    const ID = globalData.disease.ID;
+    this.param.ID = ID;
+    this.param.page = 1;
+
+    let type = urlencode('放心吃', 'gbk');
+
+    this.param.type = type;
+    this.getFoodList(
+      '',
+      {
+        action: 'Get_EatablesInfo_ByDId',
+        cid: this.cur,
+        title: '',
+        did: ID,
+        page: 1,
+        count: 10,
+        type
+      },
+      false
+    );
+  }
+}
+</script>
+<style lang="scss">
+.stapleFood {
+  .foodCategoryNav {
+    width: 100%;
+    background: #fff;
+    position: relative;
+    .categoriesShow {
+      position: absolute;
+      left: 0;
+      top: 102rpx;
+      z-index: 1;
+    }
+    .foodCategory {
+      width: 690rpx;
+      min-height: 97rpx;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      background: #fff;
+      position: relative;
+      z-index: 2;
+      .content {
+        width: 128rpx;
+        font-size: 28rpx;
+        color: #9bb3b0;
+        line-height: 97rpx;
+        display: flex;
+        flex-wrap: wrap;
+        .text {
+          width: 128rpx;
+          text-align: center;
+        }
+        .border {
+          width: 63rpx;
+          height: 5rpx;
+          background: #fff;
+          border-radius: 5rpx;
+          margin: 0 auto;
+        }
+        &.active {
+          font-size: 32rpx;
+          color: #01b9a1;
+          .border {
+            background: #01b9a1;
+          }
+        }
+      }
+    }
+  }
+
+  .main {
+    background: #eaf0ef;
+    scroll-view {
+      height: calc(100vh - 173rpx - 97rpx);
+    }
+    .foodList {
+      width: 690rpx;
+      margin: 0 auto;
+      margin-bottom: 28rpx;
+      .food {
+        width: 100%;
+        min-height: 166rpx;
+        margin-top: 28rpx;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12rpx;
+        overflow: hidden;
+        image {
+          width: 129rpx;
+          height: 129rpx;
+          margin-left: 33rpx;
+        }
+        .text {
+          width: 425rpx;
+          text {
+            font-size: 28rpx;
+            color: #9bb3b0;
+            padding-right: 18rpx;
+            display: block;
+          }
+          .foodName {
+            width: 375rpx;
+            font-size: 28rpx;
+            color: #323232;
+            display: flex;
+          }
+        }
+        .tips {
+          display: flex;
+          flex-direction: column;
+          width: 112rpx;
+          height: 112rpx;
+          margin-right: -56rpx;
+          border-radius: 50%;
+          &.green {
+            background: #01b9a1;
+          }
+          &.yellow {
+            background: #f7aa3d;
+          }
+          &.red {
+            background: #f73d3d;
+          }
+          text {
+            width: 20rpx;
+            margin-left: 26rpx;
+            margin-top: 15rpx;
+            font-size: 20rpx;
+            color: #fff;
+          }
+        }
+      }
+
+      .noData {
+        min-height: 42rpx;
+        line-height: 42rpx;
+        font-size: 24rpx;
+        text-align: center;
+        image {
+          width: 245rpx;
+          height: 365rpx;
+          margin: 0 auto;
+          margin-top: 186rpx;
+          display: block;
+        }
+        text {
+          padding-top: 30rpx;
+          color: #01b9a1;
+        }
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,152 @@
+<template>
+    <view class='categoriesShow' wx:if="{{showState}}" @tap="close">
+        <view class='headerMenu' @tap.stop="stop" style="transform:translateY({{y}}rpx)">
+            <view class='classifyList'>
+                <view wx:for="{{classifyArr}}" data-index="{{index}}" wx:key="{{index}}" class="classify {{cur == index? 'on' : ''}}" @tap="switchClassify({{item}})">
+                    {{item}}
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { getCategoryAllInfo } from '../libs/api.js';
+export default class CategoriesShow extends wepy.component {
+  config = {
+    navigationBarTitleText: ''
+  };
+  props = {
+    showState: {
+      type: Boolean,
+      default: false,
+      twoWay: true
+    },
+    cur: {
+      type: Number,
+      default: 1,
+      twoWay: true
+    },
+    y: {
+      type: Number,
+      default: -100,
+      twoWay: true
+    },
+    param: {
+      type: Object,
+      default: {},
+      twoWay: true
+    }
+  };
+
+  components = {};
+
+  data = {
+    classifyArr: ['全部分类']
+  };
+
+  computed = {};
+
+  methods = {
+    //头部菜单当前类的切换
+    switchClassify(item, e) {
+      this.cur = e.currentTarget.dataset.index;
+      this.close();
+
+      const { ID, type } = this.param;
+
+      if (this.cur == 0) {
+        this.cur = '';
+      }
+
+      this.$emit(
+        'getFoodList',
+        {
+          action: 'Get_EatablesInfo_ByDId',
+          cid: this.cur,
+          title: '',
+          did: ID,
+          page: 1,
+          count: 10,
+          type
+        },
+        true
+      );
+
+      this.$emit('changeTitle', item);
+    },
+    //关闭遮罩层
+    close() {
+      this.showState = false;
+      this.y = -100;
+    },
+    //阻止冒泡
+    stop() {}
+  };
+
+  //关闭遮罩层
+  close() {
+    this.showState = false;
+    this.y = -100;
+  }
+
+  //产品种类列表 函数
+  async classifyList() {
+    let data = await getCategoryAllInfo();
+    // console.log(data, '产品种类');
+
+    if (data.S == 1) {
+      data.List.map((item, i) => {
+        this.classifyArr.push(item.Title);
+        this.$apply();
+      });
+    }
+  }
+
+  events = {};
+
+  onReady() {}
+
+  onLoad() {
+    this.classifyList();
+  }
+}
+</script>
+
+<style lang="scss">
+.categoriesShow {
+  width: 100vw;
+  height: calc(100vh - 175rpx - 97rpx);
+  background-color: rgba(0, 0, 0, 0.5);
+  .headerMenu {
+    width: 100%;
+    min-height: 441rpx;
+    background: #fff;
+    border-top: 1rpx solid #f2f2f2;
+    transform: translateY(-100rpx);
+    transition: all 0.25s;
+    .classifyList {
+      width: 690rpx;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .classify {
+        width: 208rpx;
+        line-height: 69rpx;
+        font-size: 28rpx;
+        color: #323232;
+        text-align: center;
+        background: #f2f2f2;
+        margin-top: 32rpx;
+        border-radius: 9rpx;
+        &.on {
+          color: #fff;
+          background: #01b9a1;
+        }
+      }
+    }
+  }
+}
+</style>

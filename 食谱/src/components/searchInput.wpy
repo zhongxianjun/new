@@ -1,0 +1,201 @@
+<template>
+  <view class="searchInput">
+    <view class="content">
+      <image class="bgIcon" src="./../assets/images/headerBg.png">
+      <navigator url="{{url}}" hover-class="none">
+        <input type="text" confirm-type="search" bindfocus="onBlur" bindinput="keyInput" bindblur="lostBlur" bindconfirm="enter" focus="{{focus}}" placeholder='输入食物名称...' value="{{value}}" disabled="{{disabled}}">
+        <icon type="search" size="16" @tap="enter" />
+      </navigator>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { urlencode } from 'wepy-urlencode';
+import globalData from '../globalData.js';
+export default class SearchInput extends wepy.component {
+  config = {
+    navigationBarTitleText: ''
+  };
+
+  props = {
+    showState: {
+      type: Boolean,
+      default: true,
+      twoWay: true
+    },
+    url: {
+      type: String,
+      default: 'search'
+    },
+    value: {
+      type: String,
+      default: '',
+      twoWay: true
+    },
+    historySearchArr: {
+      type: Object,
+      default: [],
+      twoWay: true
+    },
+    focus: {
+      type: Boolean,
+      default: false,
+      twoWay: true
+    },
+    disabled: {
+      type: Boolean,
+      default: true
+    }
+  };
+
+  components = {};
+
+  data = {};
+
+  computed = {};
+
+  methods = {
+    //输入框输入非空字符时控制 历史记录 和 食物列表 的显示隐藏
+    onBlur(e) {
+      this.value = e.detail.value.trim();
+    },
+    keyInput(e) {
+      this.value = e.detail.value.trim();
+    },
+    //失去焦点，focus值变为false
+    lostBlur() {
+      this.focus = false;
+    },
+    //确认搜索 value值 加入 历史记录
+    enter(e) {
+      this.historySearchArr = wx.getStorageSync(
+        'record',
+        this.historySearchArr
+      );
+      if (this.value !== '') {
+        this.showState = false;
+        if (this.historySearchArr == []) {
+          this.historySearchArr = [this.value];
+        } else {
+          this.historySearchArr.unshift(this.value);
+        }
+        // 历史记录去重
+        this.historySearchArr = this.dedupe(this.historySearchArr);
+        //剔除超过10个的历史记录
+        if (this.historySearchArr.length > 10) {
+          this.historySearchArr.splice(10, 1);
+        }
+        //将历史记录 放入 本地存储
+        wx.setStorageSync('record', this.historySearchArr);
+
+        this.toSearch();
+      } else {
+        this.showState = true;
+      }
+    }
+  };
+
+  //确认搜索 value值 加入 历史记录
+  enter(e) {
+    this.historySearchArr = wx.getStorageSync('record', this.historySearchArr);
+    if (this.value !== '') {
+      this.showState = false;
+      if (this.historySearchArr == []) {
+        this.historySearchArr = [this.value];
+      } else {
+        this.historySearchArr.unshift(this.value);
+      }
+      // 历史记录去重
+      this.historySearchArr = this.dedupe(this.historySearchArr);
+      //剔除超过10个的历史记录
+      if (this.historySearchArr.length > 10) {
+        this.historySearchArr.splice(10, 1);
+      }
+      //将历史记录 放入 本地存储
+      wx.setStorageSync('record', this.historySearchArr);
+
+      this.toSearch();
+    } else {
+      this.showState = true;
+    }
+  }
+
+  //数组去重函数
+  dedupe(array) {
+    return Array.from(new Set(array));
+  }
+
+  //搜索功能
+  toSearch() {
+    const { ID } = globalData.disease;
+
+    let value = urlencode(this.value, 'gbk');
+    // console.log(value);
+
+    this.$emit(
+      'search',
+      {
+        action: 'Get_EatablesInfo_ByDId',
+        cid: '',
+        title: value,
+        did: ID,
+        page: '',
+        count: '',
+        type: ''
+      },
+      true
+    );
+  }
+
+  events = {
+    enter() {
+      this.enter();
+    }
+  };
+
+  onLoad() {}
+}
+</script>
+
+<style lang="scss">
+.searchInput {
+  .content {
+    width: 100%;
+    min-height: 168rpx;
+    background: linear-gradient(to bottom, #01baa1, #00d797);
+    display: flex;
+    align-items: center;
+    position: relative;
+    .bgIcon {
+      width: 221rpx;
+      height: 71rpx;
+      position: absolute;
+      left: 80rpx;
+      top: 0;
+    }
+    navigator {
+      width: 690rpx;
+      margin: 0 auto;
+      position: relative;
+      input {
+        width: 558rpx;
+        height: 87rpx;
+        font-size: 28rpx;
+        color: #323232;
+        margin: 30rpx auto 0;
+        padding: 0 100rpx 0 34rpx;
+        background-color: #fff;
+        border-radius: 10rpx;
+      }
+      icon {
+        position: absolute;
+        right: 34rpx;
+        top: 58rpx;
+        z-index: 8;
+      }
+    }
+  }
+}
+</style>

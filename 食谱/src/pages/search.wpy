@@ -1,0 +1,363 @@
+<template>
+  <view class="search">
+    <searchInput :showState.sync="showState" :url.sync="url" :value.sync="value" :historySearchArr.sync="historySearchArr" :focus.sync="focus" :disabled.sync="disabled" @search="search"></searchInput>
+
+    <view class="main" wx:if="{{!noDataState}}">
+        <view class="historySearch" wx:if="{{showState}}">
+            <view class="title">
+                <text>历史搜索</text>
+                <image src="../assets/images/delete.png" @tap="trueOrFalse">
+            </view>
+            <view class="text">
+                <view wx:for="{{historySearchArr}}" wx:key="index" data-item="{{item}}" @tap="dbBind">
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="container" wx:if="{{!showState}}">
+            <scroll-view scroll-y="true">
+                <view class='foodList' wx:if="{{foodListState}}">
+                    <navigator wx:for="{{foodListArr}}" wx:key="{{index}}" url= "particulars?ID={{item.ID}}&title={{item.Title}}">
+                        <view class='food'>
+                            <image src="{{item.ImgUrl}}">
+                            <view class='text'>
+                                <view class='foodName'>{{item.Title}}</view>
+                                <text>嘌呤：{{item.Purine}}mg</text>
+                                <text>热量：{{item.Fire}}kcal</text>
+                            </view>
+                            <view class="tips {{item.EdibleStatus=='放心吃'?'green':''}} {{item.EdibleStatus=='少量吃'?'yellow':''}} {{item.EdibleStatus=='谨慎吃'?'red':''}}">  <!-- 放心吃 class=green， 少量吃 class=yellow， 少量吃 class=red -->
+                                <text>{{item.EdibleStatus}}</text>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="noData" wx:if="{{noData.showStatus}}">
+                      <image src='../assets/images/nodata.png'>
+                      <text>暂无数据!</text>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    
+    <view class="sureClear" wx:if="{{tipShow}}">
+      <view class="container">
+        <view class="content">
+          <view class="title">
+            是否确定删除历史记录？
+          </view>
+          <view class="btn">
+            <button size="mini" type="primary" @tap="sure">
+              确定
+            </button>
+            <button size="mini" type="defult" @tap="no">
+              取消
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <NoData wx:if="{{noDataState}}" @foodCallback="search"></NoData>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { Food } from '../libs/api.js';
+import { NetworkType } from '../libs/util.js';
+//导入搜索框和无数据页面组件
+import SearchInput from '../components/searchInput';
+import NoData from '../components/NoData';
+
+export default class Search extends wepy.page {
+  config = {
+    navigationBarTitleText: '搜索'
+  };
+
+  components = {
+    searchInput: SearchInput,
+    NoData: NoData
+  };
+
+  data = {
+    foodListArr: [],
+    foodListState: true,
+    noData: {
+      //上拉加载的数据状态
+      showStatus: false,
+      text: '暂无数据'
+    },
+    param: {
+      ID: 0,
+      type: '',
+      page: 1
+    },
+    tipShow: false,
+    //无数据页面的状态控制
+    noDataState: false,
+    url: '',
+    //传给子组件的值
+    historySearchArr: [],
+    showState: true, //显示内容的状态控制
+    value: '', //跳转路径
+    focus: false,
+    disabled: true
+  };
+
+  computed = {};
+
+  methods = {
+    //是否确认清除历史记录
+    trueOrFalse(e) {
+      let _this = this;
+      this.tipShow = true;
+      let timmer = setTimeout(() => {
+        _this.$apply();
+      }, 200);
+    },
+    //确认按钮
+    sure() {
+      this.clear();
+      this.tipShow = false;
+    },
+    //取消按钮
+    no() {
+      this.tipShow = false;
+    },
+    //双向绑定历史记录和搜索框的value值
+    dbBind(e) {
+      this.value = e.currentTarget.dataset.item;
+      this.$apply();
+      this.$broadcast('enter');
+    }
+  };
+
+  //清空历史记录
+  clear() {
+    this.historySearchArr = [];
+    wx.setStorageSync('record', this.historySearchArr);
+  }
+
+  //搜索 函数
+  async search(data, info, CloseCache) {
+    this.noData.showStatus = false;
+    this.foodListState = false;
+
+    if (!data) {
+      var data = await Food(info, CloseCache);
+    }
+    // console.log(data, '搜索数据');
+
+    if (data.S == 1) {
+      this.inter(false);
+
+      this.foodListArr = data.List;
+      this.$apply();
+
+      if (data.List.length == 0) {
+        this.noData.showStatus = true;
+      }
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+
+    this.foodListState = true;
+    this.$apply();
+  }
+
+  //网络状态 抓取 函数
+  inter(data) {
+    this.noDataState = data;
+    this.$apply();
+  }
+
+  events = {
+    search: (info, CloseCache) => {
+      this.search('', info, CloseCache);
+    },
+    foodCallback: data => {
+      this.search(data);
+    }
+  };
+
+  onReady() {}
+
+  onLoad() {
+    //每次页面加载完毕，历史记录从本地存储中调用数据，重新渲染一次
+    this.historySearchArr = wx.getStorageSync('record');
+
+    this.disabled = false;
+    this.focus = true;
+  }
+}
+</script>
+
+<style lang="scss">
+.search {
+  .historySearch {
+    width: 690rpx;
+    margin: 0 auto;
+    margin-top: 48rpx;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text {
+        width: 120rpx;
+        font-size: 28rpx;
+        color: #323232;
+      }
+      image {
+        width: 28rpx;
+        height: 28rpx;
+      }
+    }
+    .text {
+      display: flex;
+      flex-wrap: wrap;
+      view {
+        width: 33.33%;
+        text-align: center;
+        text {
+          display: inline-block;
+          width: 170rpx;
+          min-height: 25rpx;
+          line-height: 25rpx;
+          font-size: 24rpx;
+          color: #888;
+          margin-top: 20rpx;
+          margin-bottom: 20rpx;
+          background: #f3f3f3;
+          border-radius: 50rpx;
+          padding: 25rpx 20rpx;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  .container {
+    background: #eaf0ef;
+    scroll-view {
+      height: calc(100vh - 173rpx);
+    }
+    .foodList {
+      width: 690rpx;
+      margin: 0 auto;
+      margin-bottom: 28rpx;
+      .food {
+        width: 100%;
+        min-height: 166rpx;
+        margin-top: 28rpx;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12rpx;
+        overflow: hidden;
+        image {
+          width: 129rpx;
+          height: 129rpx;
+          margin-left: 33rpx;
+        }
+        .text {
+          width: 425rpx;
+          text {
+            font-size: 28rpx;
+            color: #9bb3b0;
+            padding-right: 18rpx;
+            display: block;
+          }
+          .foodName {
+            width: 375rpx;
+            font-size: 28rpx;
+            color: #323232;
+            display: flex;
+          }
+        }
+        .tips {
+          display: flex;
+          flex-direction: column;
+          width: 112rpx;
+          height: 112rpx;
+          margin-right: -56rpx;
+          border-radius: 50%;
+          &.green {
+            background: #01b9a1;
+          }
+          &.yellow {
+            background: #f7aa3d;
+          }
+          &.red {
+            background: #f73d3d;
+          }
+          text {
+            width: 20rpx;
+            margin-left: 26rpx;
+            margin-top: 15rpx;
+            font-size: 20rpx;
+            color: #fff;
+          }
+        }
+      }
+
+      .noData {
+        font-size: 32rpx;
+        image {
+          width: 245rpx;
+          height: 365rpx;
+          margin: 0 auto;
+          margin-top: 186rpx;
+          display: block;
+        }
+        text {
+          display: inline-block;
+          padding-top: 30rpx;
+          color: #01b9a1;
+        }
+      }
+    }
+  }
+
+  .sureClear {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    .container {
+      width: 600rpx;
+      height: 300rpx;
+      margin: 0 auto;
+      margin-top: 400rpx;
+      background: #fff;
+      border-radius: 20rpx;
+      .content {
+        width: 100%;
+        height: 210rpx;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 45rpx;
+        .title {
+          width: 100%;
+          font-size: 32rpx;
+          text-align: center;
+        }
+        .btn {
+          width: 100%;
+          text-align: center;
+          button {
+            margin: 0 30rpx;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

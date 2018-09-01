@@ -1,0 +1,371 @@
+<template>
+<view class="content">
+  <searchInput></searchInput>
+
+  <view class="main" wx:if="{{!noDataState}}">
+    <view class="container">
+      <view class="headerBg">
+        <view class="boxRadius"></view>
+        <view class="treeBg">
+          <image src="../assets/images/index_bg.png">
+        </view>
+      </view>
+
+      <view class="foodNav">
+      <view class="top">
+        <view class='title'>当前病症：
+          <text>{{disease.title}}</text>
+          <!-- <image src="../assets/images/dowmPull.png"> --> <!-- 下拉箭头,若有需要再开启 -->
+        </view>
+      </view>
+      <view class='nav'>
+        <navigator wx:for="{{foodNav}}" wx:key="{{item.ID}}" url="stapleFood?ID={{item.ID}}&Title={{item.Title}}">
+            <image src="../assets/images/nav_{{item.ID}}.png">
+            <view>{{item.Title}}</view>
+        </navigator>
+      </view>
+      </view>
+    </view>
+    <view class="hotFood">
+      <view class="title">热搜食物</view>
+      <view class="content">
+        <view class='foodList'>
+          <navigator wx:for="{{footListArr}}" wx:key="{{index}}" url= "particulars?ID={{item.ID}}&title={{item.Title}}">
+            <view class='food'>
+              <image src="{{item.ImgUrl}}">
+              <view class='text'>
+                <view class='foodName'>{{item.Title}}</view>
+                <text>嘌呤：{{item.Purine}}mg</text>
+                <text>热量：{{item.Fire}}kcal</text>
+              </view>
+              <view class="tips {{item.EdibleStatus=='放心吃'?'green':''}} {{item.EdibleStatus=='少量吃'?'yellow':''}} {{item.EdibleStatus=='谨慎吃'?'red':''}}">  <!-- 放心吃 class=green， 少量吃 class=yellow， 少量吃 class=red -->
+                <text>{{item.EdibleStatus}}</text>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <!-- 分享组件 -->
+    <share></share>
+  </view>
+  <!-- 无数据组件 -->
+  <noData wx:if="{{noDataState}}" @foodCallback="getFoodList" @diseaseCallback="getDisease" @categoryCallback="categoryList" ></noData>
+
+</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import SearchInput from '../components/searchInput';
+import NoData from '../components/NoData';
+import share from '../components/share';
+
+import { urlencode } from 'wepy-urlencode';
+import { HTTP, NetworkType } from '../libs/util.js';
+import { Food, getCategoryAllInfo, getDiseaseAllInfo } from '../libs/api.js';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '疾病食谱'
+  };
+  components = {
+    searchInput: SearchInput,
+    noData: NoData,
+    share: share
+  };
+
+  data = {
+    disease: {
+      title: '',
+      ID: 1
+    },
+    foodNav: [],
+    footListArr: [],
+    info: {},
+    noDataState: false
+  };
+
+  computed = {};
+
+  beforeCreate() {}
+
+  methods = {};
+
+  //疾病种类 函数
+  async getDisease(data) {
+    var app = this.$parent;
+    var globalData = app.globalData;
+
+    if (!data) {
+      var data = await getDiseaseAllInfo();
+    }
+    // console.log('疾病', data);
+
+    if (data.S == 1) {
+      this.inter(!data);
+      this.disease = {
+        title: data.List[0].Title,
+        ID: data.List[0].ID
+      };
+      globalData.disease = this.disease;
+      this.$apply();
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+  }
+
+  //产品种类列表 函数
+  async categoryList(data) {
+    if (!data) {
+      var data = await getCategoryAllInfo();
+    }
+    // console.log(data, '产品种类');
+
+    if (data.S == 1) {
+      this.inter(!data);
+      this.foodNav = data.List;
+      this.$apply();
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+  }
+
+  //食物列表 函数
+  async getFoodList(data, info, CloseCache) {
+    let _this = this;
+
+    if (!data) {
+      var data = await Food(info, CloseCache);
+    }
+
+    // console.log('食物', data);
+    if (data.S == 1) {
+      this.inter(!data);
+      data.List.map((item, i) => {
+        if (i >= 0 && i < 3) {
+          _this.footListArr.push(item);
+          _this.$apply();
+        }
+      });
+      // console.log(_this.footListArr);
+    } else if (typeof data == 'boolean') {
+      this.inter(data);
+    }
+  }
+
+  //网络状态 抓取 函数
+  inter(data) {
+    this.noDataState = data;
+    this.$apply();
+  }
+
+  events = {
+    foodCallback(data) {
+      this.getFoodList(data);
+    },
+    diseaseCallback(data) {
+      this.getDisease(data);
+    },
+    categoryCallback(data) {
+      this.categoryList(data);
+    }
+  };
+
+  async onReady() {
+    this.$apply();
+    //调用 产品种类 函数
+    this.categoryList();
+    //调用 疾病种类 函数
+    await this.getDisease();
+    const { ID } = this.disease;
+
+    let type = urlencode('放心吃', 'gbk');
+
+    //调用 食物列表 函数
+    this.getFoodList(
+      '',
+      {
+        action: 'Get_EatablesInfo_ByDId',
+        cid: '',
+        title: '',
+        did: ID,
+        page: 1,
+        count: 10,
+        type
+      },
+      true
+    );
+  }
+
+  onLoad() {}
+}
+</script>
+
+<style lang="scss">
+page {
+  background: #eff5f4;
+}
+.container {
+  position: relative;
+}
+.headerBg {
+  width: 100%;
+  min-height: 246rpx;
+  background: linear-gradient(to top, #00ce9a, #00d797);
+  border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%;
+  position: relative;
+  .boxRadius {
+    width: 596rpx;
+    min-height: 142rpx;
+    border-radius: 16rpx;
+    background: rgba(255, 255, 255, 0.3);
+    margin: auto auto;
+  }
+  .treeBg {
+    width: 200rpx;
+    position: absolute;
+    right: 106rpx;
+    top: -50rpx;
+    z-index: 2;
+    image {
+      width: 200rpx;
+      height: 100rpx;
+    }
+  }
+}
+.foodNav {
+  width: 690rpx;
+  background-color: #fff;
+  box-shadow: 0px 0px 50rpx 0px rgba(0, 0, 0, 0.08);
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 40rpx;
+  z-index: 3;
+  .top {
+    width: 550rpx;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1rpx solid #f7f7f7;
+    .title {
+      text-align: center;
+      min-height: 124rpx;
+      line-height: 124rpx;
+      color: #9bb3b0;
+      font-size: 32rpx;
+      position: relative;
+      text {
+        color: #323232;
+      }
+      image {
+        width: 16rpx;
+        height: 16rpx;
+        position: absolute;
+        right: 146rpx;
+        top: 58rpx;
+      }
+    }
+  }
+}
+.foodNav .nav {
+  padding-bottom: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  width: 690rpx;
+  margin: 0 auto;
+  navigator {
+    width: 33.33%;
+    text-align: center;
+    color: #323232;
+    background: #fff;
+    padding-bottom: 23rpx;
+    padding-top: 10rpx;
+    image {
+      width: 108rpx;
+      height: 104rpx;
+    }
+  }
+}
+
+.hotFood {
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 518rpx;
+  .title {
+    height: 35rpx;
+    font-size: 32rpx;
+    color: #323232;
+    line-height: 32rpx;
+    font-weight: 900;
+    border-left: 8rpx solid #01b9a1;
+    padding-left: 20rpx;
+  }
+  .content {
+    padding-bottom: 30rpx;
+    .foodList {
+      width: 690rpx;
+      margin: 0 auto;
+      .food {
+        width: 100%;
+        min-height: 166rpx;
+        margin-top: 28rpx;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12rpx;
+        overflow: hidden;
+        image {
+          width: 129rpx;
+          height: 129rpx;
+          margin-left: 33rpx;
+        }
+        .text {
+          width: 425rpx;
+          text {
+            font-size: 28rpx;
+            color: #9bb3b0;
+            padding-right: 18rpx;
+            display: block;
+          }
+          .foodName {
+            width: 375rpx;
+            font-size: 28rpx;
+            color: #323232;
+            display: flex;
+          }
+        }
+        .tips {
+          display: flex;
+          flex-direction: column;
+          width: 112rpx;
+          height: 112rpx;
+          margin-right: -56rpx;
+          border-radius: 50%;
+          &.green {
+            background: #01b9a1;
+          }
+          &.yellow {
+            background: #f7aa3d;
+          }
+          &.red {
+            background: #f73d3d;
+          }
+          text {
+            width: 20rpx;
+            margin-left: 26rpx;
+            margin-top: 15rpx;
+            font-size: 20rpx;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

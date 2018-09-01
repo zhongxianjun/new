@@ -1,0 +1,113 @@
+<template>
+  <view class="noData">
+    <image src='../assets/images/nodata.png'>
+    <view><text>当前网络不佳，刷新试试</text></view>
+    <view class="refresh" @tap="refresh"><text>刷新页面</text></view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { Food, getCategoryAllInfo, getDiseaseAllInfo } from '../libs/api.js';
+import globalData from '../globalData.js';
+export default class NoData extends wepy.component {
+  components = {};
+
+  data = {};
+
+  prpos = {};
+
+  methods = {
+    //页面刷新 即数据再次请求
+    async refresh() {
+      // console.log(globalData);
+      const {
+        Get_CategoryAllInfo, //获取类别接口
+        Get_DiseaseAllInfo, //获取疾病接口
+        Get_EatablesInfo_ByDId //获取食物接口
+      } = globalData;
+
+      if (Get_CategoryAllInfo) {
+        let data = await getCategoryAllInfo();
+
+        // console.log(data, '刷新数据');
+        if (data.S == 1) {
+          this.$emit('categoryCallback', data);
+        }
+      }
+
+      if (Get_DiseaseAllInfo) {
+        let data = await getDiseaseAllInfo();
+
+        // console.log(data, '刷新数据');
+        if (data.S == 1) {
+          this.$emit('diseaseCallback', data);
+        }
+      }
+
+      if (Get_EatablesInfo_ByDId) {
+        const { cid, title, did, page, count, type } = Get_EatablesInfo_ByDId;
+
+        let data = await Food(
+          {
+            action: 'Get_EatablesInfo_ByDId',
+            cid,
+            title,
+            did,
+            page,
+            count,
+            type
+          },
+          true
+        );
+        // console.log(data, '刷新数据');
+        if (data.S == 1) {
+          this.$emit('foodCallback', data, { page: page });
+        }
+      }
+    }
+  };
+
+  events = {};
+
+  onLoad() {}
+}
+</script>
+
+<style lang="scss">
+.noData {
+  padding-top: 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.noData image {
+  width: 245rpx;
+  height: 365rpx;
+  margin: 0 auto;
+  margin-top: 186rpx;
+  display: block;
+}
+.noData view {
+  font-size: 28rpx;
+  color: #b4c3cd;
+  text-align: center;
+  margin-top: 38rpx;
+}
+
+.refresh {
+  width: 271rpx;
+  min-height: 80rpx;
+  background-color: #01b9a1;
+  border-radius: 10rpx;
+  margin-top: 68rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  outline: none;
+}
+.refresh text {
+  color: #fff;
+}
+</style>
