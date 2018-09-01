@@ -1,0 +1,51 @@
+<power/> 
+<!-- <BackGround></BackGround> -->
+
+
+<navigator class="search-box" hover-class="none" open-type="navigate" url="/pages/searchResult/searchResult">
+  <view class="search">
+    <!-- <view> -->
+      <view class="image-box">
+        <image mode="aspectFit" src="/images/search.png"></image>
+      </view>
+      <view class="search-input">输入关键字搜索大学</view>
+    <!-- </view> -->
+  </view>
+</navigator>
+
+<view class="banner-box">
+  <image class="banner"  mode="widthFix" src="/images/banner.png"></image>
+</view>
+
+<view class="select-function">
+  <navigator class="item hot" open-type="navigate" url="/pages/ChooseUniversity/ChooseUniversity">
+    <view class="icon">
+      <image src="/images/tiaodaxue.png"></image>
+      <image class="hot" src="/images/hot.png"></image>
+    </view>
+    <view class="title">挑大学</view>
+    <view class="des">名校任你挑选</view>
+  </navigator>
+  <navigator class="item" open-type="navigate" url="/pages/SearchSpecialty/SearchSpecialty">
+    <view class="icon">
+      <image src="/images/xuanzhuanye.png"></image>
+    </view>
+    <view class="title">选专业</view>
+    <view class="des">任选千种专业</view>
+  </navigator>
+  <navigator class="item" open-type="navigate" url="/pages/fenshuxian/fenshuxian">
+    <view class="icon">
+      <image src="/images/fenshuxian.png"></image>
+    </view>
+    <view class="title">分数线</view>
+    <view class="des">分数一览无遗</view>
+  </navigator>
+</view>
+
+<view style="height: 16rpx; background-color: #f2f2f2;"></view>
+
+<HotSchool category="schoolinfo" bind:callback="vsCountBack"></HotSchool>
+
+<Vs id="school-vs"></Vs>
+
+<Share id="share"></Share>

@@ -1,0 +1,172 @@
+<navigator wx:if="{{showhome}}" class="back-home" url="/pages/index/index" hover-class="none" open-type="redirect">
+  <image src="/images/home.png"></image>
+</navigator>
+
+<nav>
+  <view slot="box1" class="particulars">
+    <view class='interval'> </view>
+
+    <view class='generalize'>
+
+      <view class='simple'>
+        <view class='universitySimple'>
+          <image class='universityImg' src='{{SchoolList.Logo?SchoolList.Logo:"/images/none.png"}}'></image>
+          <view class='msgBox'>
+            <view class='name'>{{SchoolList.schoolname}}</view>
+            <view class='levelMsg' wx:if="{{SchoolList.membership}}">{{SchoolList.membership}}直属</view>
+          </view>
+        </view>
+        <view class='particularBox'>
+          <view>
+            <text>所在地：</text>
+            <text>{{SchoolList.province}}</text>
+          </view>
+          <view>
+            <text>院士：</text>
+            <text>{{SchoolList.Academician}}个</text>
+          </view>
+          <view>
+            <text>隶属于：</text>
+            <text>{{SchoolList.membership}}</text>
+          </view>
+          <view>
+            <text>硕士点：</text>
+            <text>{{SchoolList.MasterPilot}}个</text>
+          </view>
+          <view>
+            <text>类型：</text>
+            <text>{{SchoolList.schoolproperty}}</text>
+          </view>
+          <view>
+            <text>博士点：</text>
+            <text>{{SchoolList.DoctorStation}}个</text>
+          </view>
+          <view>
+            <text>国家重点学科：</text>
+            <text>{{SchoolList.KeySubject}}个</text>
+          </view>
+        </view>
+      </view>
+
+      <view class='filtrate'>
+        <view wx:for="{{filtrateList}}" class="{{item.act? 'act':''}}" bindtap='filter' data-index="{{index}}">{{item.Title}}</view>
+      </view>
+    </view>
+
+    <view class='content'>
+      <view class='box' wx:if="{{item.act}}" wx:for="{{filtrateList}}">
+        <view class='classify'>{{item.Title}}</view>
+        <view class='text'>
+          <rich-text nodes="{{item.Introduce}}"></rich-text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view slot="box2" class='records'>
+    <view class='interval'> </view>
+    <view class='simple'>
+      <view class='universitySimple'>
+         <image class='universityImg' src='{{SchoolList.Logo?SchoolList.Logo:"/images/none.png"}}'></image>
+        <view class='msgBox'>
+          <view class='name'>{{SchoolList.schoolname}}</view>
+           <view class='levelMsg' wx:if="{{SchoolList.membership}}">{{SchoolList.membership}}直属</view>
+        </view>
+      </view>
+
+      <view class='lsfsx'>
+        <view class='history'>历史分数线</view>
+        <view class='select'>
+          <SelectPicker  list="areaList" picker-index="{{areaIndex}}" width="250" bind:callback="setPici" name='选择地区'></SelectPicker>
+          </view>
+          
+          <view class='inquire'>
+      <button bind:tap="query">确认查询</button>
+    </view>
+      </view>
+    </view>
+
+    <view class='yearNav' wx:if="{{historyList}}" >
+      <view wx:for="{{yearList}}" bindtap='yearNav' data-index='{{idx22}}' data-val='{{value.id}}' wx:for-index='idx22' wx:for-item='value'>{{value.value}}年</view>
+      <view class='xiantiao' style='left:{{yearWidth}}'></view>
+    </view>
+    <view class='interval'  wx:if="{{historyList}}"> </view>
+    <view class='fenshuxian' wx:if="{{!nofen}}">
+        <view class='li'  wx:if="{{!likeArr.length==0}}">
+      <view class='yearBox'>
+      <view>理科</view>
+      <view>最高分:<text>{{likeArr[0].max}}</text></view>
+      <view>平均分:<text>{{likeArr[0].var}}</text> </view>
+      <view>省控线:<text>{{likeArr[0].provincescore}}</text></view>
+      <view>录取人数:<text>{{likeArr[0].num}}</text></view>
+      <view>批次:<text>{{likeArr[0].batch}}</text></view>
+      <view>分差:<text>{{likeArr[0].fencha}}</text></view>
+    </view>
+    </view>
+     <view class='wen' wx:if="{{!wenkeArr.length==0}}">
+     <view class='yearBox'>
+     <view>文科</view>
+      <view>最高分:<text>{{wenkeArr[0].max}}</text></view>
+      <view>平均分:<text>{{wenkeArr[0].var}}</text></view>
+      <view>省控线:<text>{{wenkeArr[0].provincescore}}</text></view>
+      <view>录取人数:<text>{{wenkeArr[0].num}}</text></view>
+      <view>批次:<text>{{wenkeArr[0].batch}}</text></view>
+      <view>分差:<text>{{wenkeArr[0].fencha}}</text></view>
+      </view>
+    </view>
+    </view>
+    <view wx:if="{{nofen && hasFen}}" class='noFenshu'><NoData  size ="big"></NoData></view>
+    <view class="ec-canvas-box" hidden='{{!historyList}}'>
+    <ec-canvas id="ec-canvas-dom" canvas-id="ec-canvas" ec="{{ ec }}"></ec-canvas>
+  </view>
+  </view>
+
+  <view slot="box3" class="major">
+    <view class='interval'> </view>
+    <view class='content'>
+      <view class='setting'>专业设置及分数线</view>
+      <view class='select'>
+        <SelectPicker  list="yearList" picker-index="{{yearIndex}}" width="182" bind:callback="setYear"></SelectPicker>
+          <SelectPicker list="wenliList" picker-index="{{wenliIndex}}" width="182" bind:callback="setWenli"></SelectPicker>
+        <SelectPicker  list="areaList" picker-index="{{areaIndex}}" width="182" bind:callback="setArea" ></SelectPicker>
+      </view>
+      <view class='inquire'>
+      <button bind:tap="checkMajor">确认查询</button>
+    </view>
+      
+    </view>
+    <view class='product' >
+        <SchoolMajor wx:for="{{schoolMajorList}}" school="{{item}}" wx:if="{{!hasData}}"></SchoolMajor>
+        
+        <view wx:if="{{hasData}}" class='noFenshu'><NoData  size ="big"></NoData></view>
+    </view>
+  </view>
+
+  <view slot="box4" class='recruit'>
+    <view class='interval'></view>
+    <view class='nodata'wx:if="{{!ZsxxList}}" ><NoData  size="big"></NoData></view>
+    <view class="content" wx:if="{{ZsxxList}}">
+      <view class='box' wx:for="{{ZsxxList}}" wx:for-index='idx' wx:for-index='idx2' wx:for-item='item2'>
+        <view class='title'>{{item2.Title}}</view>
+        <view class='text'><rich-text nodes="{{item2.Introduce}}"></rich-text></view>
+      </view>
+    </view>
+  </view>
+
+  <view slot="box5" class='recruit'>
+    <view class='interval'></view>
+    <view class='nodata'wx:if="{{!BkznList}}" ><NoData  size="big"></NoData></view>
+    <view class="content">
+      <view class='box' wx:for="{{BkznList}}" wx:for-index='idx' wx:for-index='idx1' wx:for-item='item1'>
+        <view class='title'>{{item1.Title}}</view>
+       <view class='text'><rich-text nodes="{{item1.Introduce}}"></rich-text></view>
+      </view>
+    </view>
+  </view>
+
+  
+</nav>
+
+<Vs id="school-vs"></Vs>
+<Share id="share"></Share>
+

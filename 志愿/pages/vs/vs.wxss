@@ -1,0 +1,45 @@
+.vs-box {
+  position: fixed; left: 0; top: 0;
+  width: 100vw; height: 100vh;
+}
+.vs-box .banner image {
+  display: block;
+  width: 100%;
+}
+
+.nodata {
+  padding: 120rpx 0 280rpx;
+  text-align: center;
+}
+.nodata image {
+  width: 200rpx;
+}
+.nodata .des {
+  font-size: 28rpx; color: #a5a5a5;
+}
+
+.vs-list {
+
+}
+.vs-list .list-item {
+  
+}
+
+
+.add-school, .start-vs {
+  margin: 30rpx auto 0;
+  width: 360rpx; height: 88rpx;
+  line-height: 88rpx; border-radius: 44rpx;
+  color: #fff; text-align: center; font-size: 32rpx;
+  background: linear-gradient(90deg, #508eff 0%, #39bafe 100%);
+}
+
+.add-school-active {
+  padding: 0 30rpx; 
+  width: 100%; height: 68rpx; box-sizing: border-box;
+  line-height: 68rpx;
+  font-size: 32rpx; 
+  background: none;
+  color: #a5a5a5;
+  text-align: left;
+}

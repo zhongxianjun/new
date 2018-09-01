@@ -1,0 +1,69 @@
+<view class="nav">
+  <view class="{{act?'act':''}}" bindtap='tabOpen'>开设院校</view>
+  <view class="{{!act?'act':''}}" bindtap='tabParticulars'>专业详情</view>
+  <view class="{{act?'gang1':'gang2'}} gang"></view>
+</view>
+<view class='xian'></view>
+<swiper bindchange="change" current="{{current}}">
+  <swiper-item>
+    <!-- 开设院校 -->
+    <scroll-view scroll-y="{{true}}" class='openUniversity' bindscroll="pageScroll">
+      <block wx:for="{{schoolList}}" wx:key="" wx:for-index="index1" wx:for-item="item1" wx:if="{{schoolList}}">
+        <SchoolInfo school="{{item1}}" bind:callback="vsCountBack"></SchoolInfo>
+      </block>
+      <view class='nodata' wx:if="{{!schoolList}}">
+        <NoData size='big'></NoData>
+      </view>
+    </scroll-view>
+  </swiper-item> 
+
+  <swiper-item>
+    <!-- 专业详情 -->
+    <view class='nodata' wx:if="{{!msg}}">
+        <NoData size='big'></NoData>
+      </view>
+    <scroll-view class='particulars' scroll-y="{{true}}" wx:if="{{msg}}" bindscroll="pageScroll">
+      <view style="padding: 0 30rpx;">
+        <view class='name'>{{msg.specialname}}{{msg.name}}</view>
+        <view class='msg'>
+          <view class='box' wx:if="{{msg.code}}">
+            <view wx:if="{{msg.code}}">专业代码
+              <text>{{msg.code}}</text>
+            </view>
+            <!-- <view wx:if="{{msg.xxnx}}">授予学位
+              <text>理学学士</text>
+            </view> -->
+          </view>
+          <view class='box' wx:if="{{msg.schoolNum}}">
+            <!-- <view wx:if="{{msg.xxnx}}">学习年限
+              <text></text>
+            </view> -->
+            <view wx:if="{{msg.schoolNum}}">开设院校
+              <text>{{msg.schoolNum}}</text>
+            </view>
+          </view>
+          <view class='box'>
+            <view>主干学科
+              <text>{{msg.zytype}}{{msg.schooltype}}</text>
+            </view>
+          </view>
+          <!-- <view class='mainSub' wx:if="{{msg.kskc}}">
+            <view>开设课程</view>
+            <view>无机化学、分析化学（含仪器分析）、有机化学、物理化学（含结构化学）、化学工程基础等。</view>
+          </view> -->
+          <!-- <view class='mainSub'>
+        <view>相近专业</view>
+        <view class='blue'> 应用化学 化学生物学 分子科学与工程</view>
+      </view> -->
+        </view>
+        <view class='name'>专业概括</view>
+        <view class='generalize'>
+          <rich-text nodes="{{msg.jieshao}}{{msg.intro}}"></rich-text>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+<Vs id="school-vs"></Vs>
+
+<Share id="share"></Share>

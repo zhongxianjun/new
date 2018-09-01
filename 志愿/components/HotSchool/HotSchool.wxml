@@ -1,0 +1,27 @@
+<view class="hot-school">
+  <view class="title-box">
+    <view class="title">
+      热门大学
+    </view>
+  </view>
+
+  <view class="hot-school-container">
+    <view class="select-current">
+      <block wx:for="{{selectName}}" wx:key="">
+        <view class="item{{index === current ? ' current' : ''}}" data-index="{{index}}" bindtap="selectCurrent">{{item}}</view>
+      </block>
+    </view>
+    <view class="container-box" id="12345">
+      <view class="slide">
+          <block wx:for="{{selectName}}" wx:key="" wx:for-index="index0" wx:for-item="item0">
+            <view class="slide-item" hidden="{{!(current === index0)}}">
+                  <block wx:for="{{schoolList[index0]}}" wx:key="" wx:for-index="index1" wx:for-item="item1">
+                    <SchoolInfo wx:if="{{category === 'schoolinfo'}}" school="{{item1}}" bind:callback="vsCountBack"></SchoolInfo>
+                    <SchoolLine wx:if="{{category === 'schoolline'}}" school="{{item1}}" bind:callback="vsCountBack"></SchoolLine>
+                  </block>
+              </view>
+          </block>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<view class='searchBox'>
+  
+  <input class="search-input" focus="{{true}}" bindinput="input" bindconfirm="confirm" placeholder-style="color: #888;" placeholder="搜索关键字" type="text" confirm-type="done" value="{{input}}"/>
+  <view class="image-box" bindtap="confirm">
+    <image mode="aspectFit" src="/images/search.png"></image>
+  </view>
+</view>
+
+<view class='broad'>
+    <view class='broadTitle'>专业大类</view>
+    <view class='content'  style="height:{{bigHeight}}">
+      <view wx:for="{{broadList}}" class="{{item.act?'act':''}}" bindtap='chooseSmall' data-id='{{item.ID}}'>{{item.Name}}</view>
+    </view>
+    <view class='unfold' bindtap='bigClass'>{{Unfold}} </view>
+</view>
+<!-- <view class='subclass'>
+    <view class='subclassTitle'>专业小类</view>
+    <view class='content'>
+      <view wx:for="{{subclassList}}">{{item}}</view>
+    </view>
+    <view class='unfold'>展开全部专业 </view>
+</view> -->
+<view class='xian'></view>
+<HotMajor wx:if="{{!subclassList}}"></HotMajor>
+<view class='hot'>
+<view class="title-box" wx:if="{{subclassList}}"><view class="title">搜索结果</view></view>
+<navigator class="majorNmae" wx:for="{{subclassList}}" url='/pages/specialty/specialty?id={{item.ID}}&name={{item.specialname}}'><text>{{item.specialname}}</text> <text>查看详情</text></navigator> 
+</view>
+
+<Vs id="school-vs"></Vs>  
+<Share id="share"></Share>

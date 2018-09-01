@@ -1,0 +1,9 @@
+<view class="area-box">
+  <block wx:for="{{areaList}}" wx:key="">
+    <view class="area" catch:tap="selectSchool" data-id="{{item.ID}}">
+      <view class="item">
+        {{item.ProvinceName}}
+      </view>
+    </view>
+  </block>
+</view>

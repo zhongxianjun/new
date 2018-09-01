@@ -1,0 +1,4 @@
+<view class="noData{{size === 'big' ? '' : ''}}{{size === 'middle' ? ' middle' : ''}}{{size === ('small' || '') ? ' small' : ''}}">
+  <image src='/images/404_01.png'></image>
+  <view><text>还在努力补充数据中哦 去看看别的吧</text></view>
+</view>

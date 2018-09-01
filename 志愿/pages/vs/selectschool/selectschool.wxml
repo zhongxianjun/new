@@ -1,0 +1,5 @@
+<ScrollView id="select-school" params="{{schoolRseultUrl}}" lowerThreshold="100" width="100%" height="calc(100vh)" bind:callback="schoolRseultBack">
+  <block wx:for="{{schoolList}}" wx:key="">
+    <SchoolInfo school="{{item}}" change-index="{{changeIndex}}"></SchoolInfo>
+  </block>
+</ScrollView>

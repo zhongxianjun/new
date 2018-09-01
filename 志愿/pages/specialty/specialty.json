@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "专业",
+  "usingComponents": {
+    "SchoolInfo": "/components/SchoolInfo/SchoolInfo",
+    "SchoolLine": "/components/SchoolLine/SchoolLine",
+    "NoData": "/components/NoData/NoData",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+}

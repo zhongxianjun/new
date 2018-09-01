@@ -1,0 +1,10 @@
+<view class="select-condition">
+  <view class="select-picker">
+    {{name}}
+    <picker bindchange="pickerChange" mode="selector" value="{{pickerIndex}}" range="{{resultList}}" range-key="value">
+      <view class="picker" style="width: {{width}}rpx;">
+        {{resultList[pickerIndex]['value']}}
+      </view>
+    </picker> 
+  </view>
+</view>

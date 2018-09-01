@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜索",
+  "usingComponents": {
+    "SchoolInfo": "/components/SchoolInfo/SchoolInfo",
+    "NoData": "/components/NoData/NoData",
+    "ScrollView": "/components/ScrollView/ScrollView",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "院校PK",
+  "usingComponents": {
+    "VsItem": "/components/VsItem/VsItem",
+    "Share": "/components/Share/Share"
+  }
+}

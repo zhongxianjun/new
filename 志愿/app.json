@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ChooseUniversity/ChooseUniversity",
+    "pages/university/university",
+    "pages/SearchSpecialty/SearchSpecialty",
+    "pages/specialty/specialty",
+    "pages/searchResult/searchResult",
+    "pages/fenshuxian/fenshuxian",
+    "components/SchoolInfo/SchoolInfo",
+    "components/NoData/NoData",
+    "components/SchoolMajor/SchoolMajor",
+    "pages/fenshuxian/diquline/diquline",
+    "components/UniversityNav/UniversityNav",
+    "pages/vs/vs",
+    "pages/vs/selectarea/selectarea",
+    "pages/vs/selectschool/selectschool",
+    "pages/vs/vsresult/vsresult"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3faefe",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "高考院校库"
+  },
+  "networkTimeout": {
+    "request": 30000
+  }
+}

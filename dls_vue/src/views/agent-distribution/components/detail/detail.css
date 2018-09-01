@@ -1,0 +1,161 @@
+.detail {
+  padding: 10px 20px;
+  background: #fff;
+}
+.detail .header {
+  min-height: 91px;
+}
+.detail .header .left .userinfo {
+  display: flex;
+  align-content: space-between;
+  width: 100%;
+}
+.detail .header .left .userinfo span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  background: #ccc;
+}
+.detail .header .left .userinfo span i {
+  line-height: 40px;
+}
+.detail .header .left .userinfo .infotext {
+  margin-left: 10px;
+}
+.detail .header .left .left-bottom {
+  width: 100%;
+  margin-top: 20px;
+}
+.detail .header .content {
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.detail .header .content h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 50px;
+  color: #000;
+}
+.detail .header .content p {
+  color: #000;
+  line-height: 30px;
+  font-size: 16px;
+}
+.detail .headlines {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 2px 2px 0 0;
+  zoom: 1;
+  margin-bottom: -1px;
+  min-height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+}
+.detail .detailedInfo {
+  margin-top: 40px;
+  padding: 0 32px;
+  border: 1px solid #e8e8e8;
+}
+.detail .detailedInfo i {
+  font-style: normal;
+  color: #1890ff;
+  cursor: pointer;
+}
+.detail .detailedInfo .contact,
+.detail .detailedInfo .financialInfo {
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px dashed #a5a5a5;
+}
+.detail .detailedInfo .contact {
+  padding: 10px 0;
+}
+.detail .detailedInfo .financialInfo {
+  padding: 10px 0;
+}
+.detail .detailedInfo .safe {
+  padding: 20px 0;
+  width: 100%;
+  margin: -10px auto 0;
+}
+.detail .detailedInfo .title {
+  width: 100%;
+  margin: 10px 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+}
+.detail .detailedInfo .title span {
+  color: rgba(0, 0, 0, 0.65);
+}
+.detail .detailedInfo .infoContent .content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 0 12px 0;
+}
+.detail .detailedInfo .infoContent .content p {
+  margin-right: 30px;
+}
+.detail .withdrawal {
+  padding: 0 32px;
+  margin-top: 40px;
+  border: 1px solid #e8e8e8;
+}
+.detail .withdrawal .container .text {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.detail .withdrawal .container .top {
+  min-height: 76px;
+  margin-top: 24px;
+  padding-bottom: 20px;
+}
+.detail .withdrawal .container .bottom {
+  min-height: 76px;
+  margin-top: 24px;
+  padding-bottom: 20px;
+}
+.detail .withdrawal .container .bottom span {
+  font-size: 12px;
+  color: #a5a5a5;
+}
+.detail .withdrawal .container .noData {
+  min-height: 42px;
+  line-height: 42px;
+  font-size: 16px;
+  text-align: center;
+  margin: 20px 0;
+}
+.detail .record {
+  position: relative;
+  width: 100%;
+}
+.detail .record .title {
+  min-height: 45px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+}
+.detail .record .title .titleList {
+  height: 100%;
+  margin-right: 32px;
+  padding: 12px 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #fff;
+  cursor: pointer;
+}
+.detail .record .title .titleList.hover {
+  color: #1890ff;
+}
+.detail .record .title .titleList.cur {
+  color: #1890ff;
+  border-bottom: 2px solid #1890ff;
+}
+.detail .record .table .page {
+  margin-top: 20px;
+  text-align: right;
+}

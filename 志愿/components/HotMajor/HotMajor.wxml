@@ -1,0 +1,15 @@
+<view class="hot-major">
+    <view class="title-box">
+      <view class="title">
+        热门专业
+      </view>
+    </view>
+    <view class="hot-major-container">
+      <block wx:for="{{majorList}}" wx:key="">
+        <navigator class="item" open-type="navigate" url="/pages/specialty/specialty?id={{item.zid}}&schoolid={{item.schoolid}}&name={{item.specialname}}">
+          <view class="left">{{item.specialname}}</view>
+          <view class="right">查看详情</view>
+        </navigator>
+      </block>
+    </view>
+</view>

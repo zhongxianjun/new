@@ -1,0 +1,39 @@
+<view class="search-box">
+  <input class="search-input" focus="{{true}}" bindinput="input" bindconfirm="confirm" placeholder-style="color: #888;" placeholder="搜索关键字" type="text" confirm-type="done" value="{{inputValue}}"/>
+  <view class="image-box" bindtap="confirm">
+    <image mode="aspectFit" src="/images/search.png"></image>
+  </view>
+</view>
+
+<view class="result-container-box">
+  <view class="result-container" hidden="{{!resultShow}}">
+    <ScrollView id="search-rseult" params="{{searchRseultUrl}}" lowerThreshold="100" width="100%" height="calc(100vh - 132rpx)" bind:callback="searchBack" bind:scroll="pageScroll">
+        <view>
+          <block wx:for="{{resultList}}" wx:key="">
+            <SchoolInfo school="{{item}}" bind:callback="vsCountBack"></SchoolInfo>
+          </block>
+        </view>
+    </ScrollView>
+  </view>
+  <view hidden="{{!noData}}">
+    <NoData size="big"></NoData>
+  </view>
+  <view class="history-search" hidden="{{resultList.length}}">
+    <view class="title">
+      <view class="left">历史搜索</view>
+      <view class="right" catch:tap="deleteHistory">
+        <view class="image-box">
+          <image src="/images/delete.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <block wx:for="{{historyList}}" wx:key="">
+        <view class="item" catch:tap="searchBefore" data-value="{{item}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<Vs id="school-vs"></Vs>
+<Share id="share"></Share>

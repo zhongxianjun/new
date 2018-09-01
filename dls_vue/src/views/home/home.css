@@ -1,0 +1,106 @@
+.home-main {
+  padding: 20px 20px;
+}
+.home-main .top .container {
+  display: flex;
+}
+.home-main .top .container .left {
+  width: 50%;
+}
+.home-main .top .container .left .content {
+  min-height: 300px;
+}
+.home-main .top .container .left .content .header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.home-main .top .container .left .content .header .title {
+  width: 303px;
+  min-height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+  padding: 16px 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+.home-main .top .container .right {
+  width: 50%;
+  margin-left: 20px;
+}
+.home-main .top .container .right .card {
+  min-height: 300px;
+}
+.home-main .top .container .right .card .header {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 16px 24px;
+  border-radius: 2px 2px 0 0;
+  margin-bottom: -1px;
+  min-height: 48px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+.home-main .top .container .right .card .content {
+  display: flex;
+  align-items: center;
+  min-height: 240px;
+}
+.home-main .top .container .right .card .content .info .text {
+  text-align: center;
+}
+.home-main .top .container .right .card .content .info .text span {
+  display: inline-block;
+  width: 100%;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 80px;
+  min-height: 80px;
+}
+.home-main .top .container .right .card .content .info .text h3 {
+  min-height: 60px;
+  line-height: 60px;
+  margin-top: 0;
+  margin-bottom: .5em;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+.home-main .bottom {
+  margin-top: 24px;
+}
+.home-main .bottom .container {
+  min-height: 400px;
+}
+.home-main .bottom .container .header {
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 46px;
+  padding-right: 44px;
+}
+.home-main .bottom .container .header .title {
+  width: 303px;
+  min-height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+  padding: 16px 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+.home-main .copyright {
+  text-align: center;
+  line-height: 93px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+}

@@ -1,0 +1,66 @@
+page {
+  overflow-x: hidden;
+}
+.component-box {
+  position: relative; 
+  width: 100%;
+  overflow: hidden;
+}
+.component-item {
+  position: relative; z-index: 9;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+.content {
+  display: flex; align-items: center;
+  padding: 38rpx 30rpx 38rpx 0; box-sizing: border-box;
+  border-bottom: 1px solid #f2f2f2;
+}
+.content .left {
+  
+}
+.content .left .icon {
+  width: 114rpx; height: 114rpx;
+  border-radius: 50%; overflow: hidden;
+}
+.content .left .icon image {
+  width: 100%; height: 100%;
+}
+
+.content .right {
+  margin-left: 38rpx;
+}
+.content .right .name {
+  font-size: 28rpx; line-height: 1;
+}
+.content .right .des {
+  margin-top: 16rpx;
+  font-size: 24rpx; color: #a5a5a5; line-height: 1;
+}
+
+.function-box {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 100%;
+}
+.change {
+  position: absolute; left: 100%; top: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 75px; height: 100%;
+  background-color: #4b97ff;
+  font-size: 32rpx; color: #ffffff;
+}
+.delete {
+  position: absolute; left: calc(100% + 75px); top: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 75px; height: 100%;
+  background-color: #ff3a31;
+  font-size: 32rpx; color: #ffffff;
+}
+.confirm-delete {
+  position: absolute; left: 200%; top: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: calc(75px * 2); height: 100%;
+  background-color: #ff3a31;
+  font-size: 32rpx; color: #ffffff;
+  transition: left 0.2s;
+}

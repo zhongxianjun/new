@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "分数线",
+  "usingComponents": {
+    "HotSchool": "/components/HotSchool/HotSchool",
+    "HotMajor": "/components/HotMajor/HotMajor",
+    "SelectPicker": "/components/SelectPicker/SelectPicker",
+    "MajorLine": "/components/MajorLine/MajorLine",
+    "SchoolLine": "/components/SchoolLine/SchoolLine",
+    "NoData": "/components/NoData/NoData",
+    "ScrollView": "/components/ScrollView/ScrollView",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+}

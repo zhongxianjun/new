@@ -1,0 +1,8 @@
+<!-- <button open-type="share" class="share{{transition ? ' transition' : ''}}" id="share" style='left: {{left}}px; top: {{top}}px; opacity: {{alpha}};' bind:touchstart='start' catch:touchmove='move' catch:touchend='end'>
+    分享给好友
+</button> -->
+
+<button open-type="share" class="share" id="share" style="transition: transform 1s; bottom: {{bottom}}; {{hideVs ? 'transform: translateX(140rpx);' : ''}}">
+    <image src="/images/share.png"></image>
+    分享给好友
+</button>

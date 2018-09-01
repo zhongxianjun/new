@@ -1,0 +1,18 @@
+<view class="component-item">
+  <view class="content" bindtap="checkDetails">
+    <view class="left">
+      <view class="name">{{school.specialname}}</view>
+    </view>
+    <view class="right">{{(height > 0) ? '收起' : '查看详情'}}</view>
+  </view>
+  <view class="details-box" id="details-box" style="height: {{height}}px">
+    <view class="details" id="details">
+      <view class="sort-box">
+        <view class="sort">批次：<span>{{school.pc}}</span></view>
+        <view class="sort">文理科：<span>{{school.stype}}</span></view>
+        <view class="sort">最高分：<span>{{school.maxfs}}</span></view>
+        <view class="sort">平均分：<span>{{school.varfs}}</span></view>
+      </view>
+    </view>
+  </view>
+</view>

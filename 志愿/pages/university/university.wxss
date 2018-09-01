@@ -1,0 +1,500 @@
+/* 学校概括 */
+.interval {
+  height: 16rpx;
+  background-color: #f2f2f2;
+}
+.particulars .generalize{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.particulars .generalize .simple{
+  margin-top:37rpx; 
+}
+.particulars .simple .universitySimple{
+ display: flex;
+ justify-content: flex-start;
+}
+.particulars .universitySimple image{
+  width: 114rpx;
+  height: 114rpx;
+}
+.particulars .universitySimple .msgBox{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+   padding-left:20rpx; 
+}
+.particulars .universitySimple .msgBox .name{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #323232;
+ 
+}
+.particulars .levelMsg{
+  font-size: 24rpx;
+  color: #a5a5a5;
+  padding-top:20rpx; 
+}
+.particulars .simple .particularBox{
+  display: flex;
+  flex-wrap: wrap;
+ margin-top: 17rpx;
+}
+.particulars .simple .particularBox view{
+  font-size: 24rpx;
+  margin-top:20rpx; 
+  color: #323232;
+}
+.particulars .simple .particularBox view text:nth-child(1){
+ color: #a5a5a5;
+}
+.particulars .simple .particularBox view:nth-child(3n+1){
+  width: 220rpx;
+}
+.particulars .simple .particularBox view:nth-child(3n+2){
+  width: 175rpx;
+}
+.particulars .simple .particularBox view:nth-child(7){
+  width: 300rpx;
+}
+.particulars .filtrate{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24rpx;
+} 
+.particulars .filtrate view{
+  width: 208rpx;
+	height: 70rpx;
+	background-color: #f2f2f2;
+	border-radius: 10rpx;
+  line-height: 70rpx;
+  text-align: center;
+  margin-right:32rpx; 
+  margin-top: 23rpx;
+} 
+.particulars .filtrate view:nth-child(3n){
+  margin-right:0px; 
+}
+.particulars .filtrate .act{
+  background-color: #419aff;
+  color: #fff;
+}
+.particulars .content{
+  padding-left:30rpx; 
+}
+.particulars .content .box{
+  font-size: 28rpx;
+  font-weight: 900;
+  font-family: PingFang-SC-Bold;
+  padding-bottom: 25rpx;
+  padding-right: 30rpx;
+}
+
+.particulars .content .box .text{
+  margin-top: 25rpx;
+}
+.particulars .content .box rich-text {
+  font-size: 28rpx;
+  font-weight: normal;
+  color:#323232;
+  line-height: 50rpx;
+}
+.particulars .content .box:first-child{
+  margin-top:70rpx; 
+}
+.particulars .content .box:last-child{
+  margin-bottom:0rpx; 
+}
+.particulars .box .textBox view{
+  font-size: 28rpx;
+  color:#323232;
+  font-weight: normal;
+  line-height:50rpx;
+} 
+.particulars .content .box .classify{
+  padding-bottom:30rpx; 
+  border-bottom: #f2f2f2 1rpx solid;
+}
+.particulars .total{
+ margin-top:25rpx;
+}
+.particulars .lab{
+  margin-top: 60rpx;
+}
+.particulars .lab view:first-child{
+  padding-bottom: 60rpx;
+}
+
+
+/* 专业分数线 */
+.major .interval {
+  height: 16rpx;
+  background-color: #f2f2f2;
+}
+.major .product{
+  margin-top: 60rpx;
+}
+.major .content {
+  padding: 0 30rpx ;
+}
+
+.major .setting {
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #419aff;
+  line-height: 80rpx;
+}
+
+.major .select {
+  display: flex;
+  justify-content: space-between;
+  width: 690rpx;
+}
+
+.major .select>view {
+  font-family: PingFang-SC-Bold;
+  width: 182rpx;
+  height: 67rpx;
+  border: solid 1rpx #eee;
+  border-radius: 15rpx;
+  line-height: 67rpx;
+  text-align: left;
+  padding-left: 25rpx;
+  color: #323232;
+  position: relative;
+  font-weight: bold;
+}
+
+.major .select>view::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 10rpx 9rpx 0;
+  border-style: solid;
+  border-color: #a5a5a5 transparent transparent;
+  position: absolute;
+  top: 29rpx;
+  right: 23rpx;
+}
+
+.major .majorNmae {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx 0 0;
+  height: 120rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  color: #323232;
+  font-size: 28rpx;
+}
+.major .majorNmae text:nth-child(2){
+  color: #a5a5a5;
+  font-size: 24rpx;
+}
+
+/* 历史分数线 */
+
+.records .interval {
+  height: 16rpx;
+  background-color: #f2f2f2;
+}
+
+.records  .simple{
+  width: 690rpx;
+  margin: 0 auto; 
+  margin-top: 20rpx;
+}
+.records  .simple .universitySimple{
+ display: flex;
+ justify-content: flex-start;
+}
+.records  .universitySimple image{
+  width: 114rpx;
+  height: 114rpx;
+}
+.records .universitySimple .msgBox{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+   padding-left:20rpx; 
+}
+.records .universitySimple .msgBox .name{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #323232;
+ 
+}
+.records .levelMsg{
+  font-size: 24rpx;
+  color: #a5a5a5;
+  padding-top:20rpx; 
+}
+.records .lsfsx{
+   width: 690rpx;
+  margin: 0 auto; 
+}
+.records .lsfsx .history{
+   height: 80rpx;
+  font-size: 24rpx;
+  color: #419aff;
+  line-height: 80rpx;
+}
+
+.records .lsfsx .select {
+  display: flex;
+  width: 690rpx;
+ justify-content: space-between;
+}
+
+.records .lsfsx  .select>view {
+  font-family: PingFang-SC-Bold;
+  width: 167rpx;
+  height: 59rpx;
+  border: solid 1rpx #eee;
+  border-radius: 15rpx;
+  line-height: 59rpx;
+  text-align: left;
+  color: #323232;
+  position: relative;
+  font-weight: bold;
+  padding-left:25rpx; 
+  margin-right: 21px;
+}
+.records .lsfsx  .select>view:nth-child(2) {
+  width: 212rpx
+}
+.records .select>view::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 10rpx 9rpx 0;
+  border-style: solid;
+  border-color: #a5a5a5 transparent transparent;
+  position: absolute;
+  top: 29rpx;
+  right: 23rpx;
+}
+.records .yearNav{
+  display: flex;
+  position: relative;
+}
+.records .yearNav .xiantiao{
+  height: 4rpx;
+  width: 20%;
+  background: #419aff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: all 0.5s;
+}
+.records .yearNav view{
+  width: 25%;
+ font-size: 28rpx;
+ color: #323232;
+ text-align: center;
+ height: 85rpx;
+ line-height: 85rpx;
+ margin-top: 36rpx;
+}
+.records .Megbox{
+  display: flex;
+  flex-wrap: wrap;
+  width: 690rpx;
+  margin: 0 auto;
+}
+.records .Megbox view{
+  margin-top: 42rpx;
+}
+.records .Megbox view text{
+  color: #419aff;
+}
+.records .Megbox view:nth-child(3n+1){
+  width: 265rpx;
+}
+.records .Megbox view:nth-child(3n+2){
+  width: 259rpx;
+}
+.records .admit{
+  width: 360rpx;
+	height: 88rpx;
+	background-image: linear-gradient(90deg, 
+		#508eff 0%, 
+		#39bafe 100%), 
+	linear-gradient(
+		#0d69ba, 
+		#0d69ba);
+	background-blend-mode: normal, 
+		normal;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 32rpx;
+    line-height: 88rpx;
+    text-align: center;
+    border-radius: 44rpx;
+    margin-top: 50rpx;
+}
+.records .explain{
+  display: flex;
+  justify-content: center;
+  margin-top: 58rpx;
+}
+.records .explain view{
+  width: 120rpx;
+  font-size: 20rpx;
+  color: #a5a5a5;
+}
+.records .explain .topScore text{
+  display: inline-block;
+  width: 16rpx;
+	height: 16rpx;
+	background-color: #5688c1;
+  border-radius: 50%;
+  margin-right: 15rpx;
+ 
+}
+.records .explain .control text{
+  display: inline-block;
+  width: 16rpx;
+	height: 16rpx;
+background-color: #af9fca;
+  border-radius: 50%;
+   margin-right: 15rpx;
+   
+}
+.records .explain .average text{
+  display: inline-block;
+  width: 16rpx;
+	height: 16rpx;
+background-color: #ca7aa3;
+  border-radius: 50%;
+   margin-right: 15rpx;
+ 
+}
+.records .qxt{
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 70rpx;
+ 
+}
+.records .qxt image{
+  height: 359rpx;
+  width: 690rpx;
+  display: block;
+}
+
+/* 招生信息 */
+.recruit .content{
+  padding-left:28rpx; 
+}
+.recruit .xian{
+  height: 2px;
+	background-color: #f2f2f2;
+}
+.nodata{
+  height: 900rpx;
+  display: flex;
+  align-items: center;
+}
+.nodata NoData{
+  margin: 0 auto;
+}
+.noFenshu{
+  height: 600rpx;
+  display: flex;
+  align-items: center;
+}
+.noFenshu NoData{
+  margin: 0 auto;
+}
+.recruit .box{color: #323232;margin-bottom: 20rpx;}
+.recruit .box .title{
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f2f2f2; 
+  padding-top: 38rpx;
+  font-size: 28rpx;
+
+}
+.recruit .box .text{
+ font-size: 28rpx;
+ line-height: 50rpx;
+ margin-top: 28rpx;
+ padding-right: 26rpx;
+}
+
+/* 院校全景 */
+.panorama{
+
+}
+.panorama .imgBox{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30rpx;
+}
+.panorama .imgBox image{
+  width: 690rpx;
+  margin:  0 auto;
+  display: block;
+  height: 330rpx;
+  margin-top: 26rpx;
+}
+selectpicker{
+  min-width: 0%!important;
+  margin-top: 0!important;
+}
+.inquire button {
+  width: 100%;
+  height: 93rpx;
+  border-radius: 15rpx;
+  background-image: linear-gradient(90deg, 
+		#508eff 0%, 
+		#39bafe 100%), 
+	linear-gradient(
+		#419aff, 
+		#419aff);
+  color: #fff;
+  font-size: 36rpx;
+margin-top: 30rpx;
+}
+.ec-canvas-box {
+  margin-top: 50rpx;
+  padding-top: 30rpx;
+  width: 100%; height: 500rpx; box-sizing: border-box;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.yearBox{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 690rpx;
+  margin: 0 auto;
+}
+.yearBox view:first-child{
+  width: 100%;
+  font-size: 32rpx;
+  color: #323232;
+  padding: 20rpx 0 15rpx;
+  
+}
+.yearBox view{
+  width: 33%;
+  font-size: 28rpx;
+}
+.yearBox view text{
+  color: #419aff;
+  padding-left:20rpx; 
+}
+.fenshuxian{
+
+}
+
+.back-home {
+  position: fixed; right: 20rpx; top: 120rpx; z-index: 99999;
+  width: 100rpx; height: 100rpx;
+}
+.back-home image {
+  width: 100%; height: 100%;
+  display: block;
+}

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "挑大学",
+  "usingComponents": {
+    "HotSchool": "/components/HotSchool/HotSchool",
+    "SelectPicker": "/components/SelectPicker/SelectPicker",
+    "SchoolInfo": "/components/SchoolInfo/SchoolInfo",
+    "SchoolLine": "/components/SchoolLine/SchoolLine",
+    "NoData": "/components/NoData/NoData",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+  
+}

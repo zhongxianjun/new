@@ -1,0 +1,28 @@
+<view class="component-item">
+  <view class="content" bindtap="checkLine">
+    <view class="left">
+      <view class="icon">
+        <image src="{{school.Logo ? school.Logo: '/images/none.png'}}"></image>
+      </view>
+      <view class="name">{{school.schoolname}}</view>
+    </view>
+    <view class="right">{{(height > 0) ? '收起' : '查看详情'}}</view>
+  </view>
+  <view class="details-box" id="details-box" style="height: {{height}}px">
+    <view class="details" id="details">
+      <block wx:for="{{line}}" wx:key="">
+        <view class="sort-box">
+          <view class="sort" style="width: 100%;">{{item.year}}年<text>　</text>{{item.stype}}</view>
+          <view class="sort">最高分：<span>{{item ? (item.maxfs !== '0' ? item.maxfs : '暂无') : '暂无'}}</span></view>
+          <view class="sort">平均分：<span>{{item ? (item.varfs !== '0' ? item.varfs : '暂无') : '暂无'}}</span></view>
+          <view class="sort">最低分：<span>{{item ? (item.minfs !== '0' ? item.minfs : '暂无') : '暂无'}}</span></view>
+        </view>
+      </block>
+      <NoData wx:if="{{!line.length}}" size="middle"></NoData>
+      <view class="check-add">
+        <navigator class="check to" open-type="navigate" url="/pages/university/university?id={{school.ID}}">院校详情</navigator>
+        <view class="add to" bindtap="addVs">加入对比</view>
+      </view>
+    </view>
+  </view>
+</view>

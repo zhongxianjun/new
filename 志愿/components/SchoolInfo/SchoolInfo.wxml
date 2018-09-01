@@ -1,0 +1,26 @@
+<view class="component-item">
+  <view class="content" bindtap="checkDetails">
+    <view class="left">
+      <view class="icon">
+        <image src="{{school.Logo ? school.Logo: '/images/none.png'}}"></image>
+      </view>
+      <view class="name">{{school.schoolname}}</view>
+    </view>
+    <view class="right">{{(height > 0) ? '收起' : '查看详情'}}</view>
+  </view>
+  <view class="details-box" id="details-box" style="height: {{height}}px">
+    <view class="details" id="details">
+      <view class="sort-box">
+        <view class="sort">所在地：<span>{{school.province}}</span></view>
+        <view class="sort">类别：<span>{{school.schoolproperty}}</span></view>
+        <view class="sort">层次：<span>{{school.schooltype}}</span></view>
+        <view class="sort">所属：<span>{{school.membership}}</span></view>
+        <view class="sort">类型：<span>{{school.schoolnature}}</span></view>
+      </view>
+      <view class="check-add">
+        <navigator class="check to" open-type="navigate" url="/pages/university/university?id={{school.ID}}">院校详情</navigator>
+        <view class="add to" bindtap="addVs">加入对比</view>
+      </view>
+    </view>
+  </view>
+</view>

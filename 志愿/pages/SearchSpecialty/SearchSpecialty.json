@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜专业" ,
+  "usingComponents": {
+    "HotMajor": "/components/HotMajor/HotMajor",
+    "MajorLine": "/components/MajorLine/MajorLine",
+    "NoData": "/components/NoData/NoData",
+    "Share": "/components/Share/Share",
+    "Vs": "/components/Vs/Vs"
+  }
+}

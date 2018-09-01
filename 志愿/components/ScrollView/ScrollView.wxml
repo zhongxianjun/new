@@ -1,0 +1,5 @@
+<scroll-view scroll-y="{{scrollY}}" scroll-x="{{scrollX}}" bindscrolltolower="scrollToLower" lower-threshold="{{lowerThreshold}}"   style="width: {{width}}; max-height: {{height}};" bindscroll="pageScroll">
+  <slot>
+    
+  </slot>
+</scroll-view>

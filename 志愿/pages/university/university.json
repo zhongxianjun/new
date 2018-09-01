@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "nav": "/components/UniversityNav/UniversityNav",
+    "NoData": "/components/NoData/NoData",
+    "SelectPicker": "/components/SelectPicker/SelectPicker",
+    "SchoolMajor": "/components/SchoolMajor/SchoolMajor",
+    "ec-canvas": "/components/ec-canvas/ec-canvas",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+}

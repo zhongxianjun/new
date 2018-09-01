@@ -1,0 +1,43 @@
+.scrollBox{
+  width: 720rpx;
+  padding: 15rpx 15rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 99999999;
+  box-shadow: 0 5rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+.navbox{
+  display: flex;
+  width:100%;
+  white-space: nowrap;
+  transition: all 1s;
+  
+}
+.navbox view{
+  padding: 0 30rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 68rpx;
+  height: 68rpx;
+  color: #323232;
+  font-size: 28rpx;
+  transition: all 0.5s;
+  border-radius: 6rpx;
+  background: #f2f2f2;
+  margin-right: 20rpx;
+}
+.navbox view:last-child{
+  margin-right: 0rpx;
+}
+.navbox .act{
+  color: #ffffff;
+  background: #419aff;
+}
+
+.cotentBox{
+  width: 100%;
+  padding-top:98rpx; 
+
+}

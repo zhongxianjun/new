@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "NoData": "/components/NoData/NoData",
+    "ec-canvas": "/components/ec-canvas/ec-canvas",
+    "Vs": "/components/Vs/Vs",
+    "Share": "/components/Share/Share"
+  }
+}

@@ -1,0 +1,9 @@
+<view class='scrollBox'>
+    <scroll-view scroll-x="{{true}}" class='navbox' scroll-left="{{offsetLeft}}" scroll-with-animation="{{true}}">
+  <view wx:for="{{navList}}" class="{{item.act?'act':''}}" wx:key='' bindtap='_act' data-index="{{index}}">{{item.name}}</view>
+  
+</scroll-view>
+</view>
+<view class='cotentBox'>
+  <view wx:if="{{item.act}}" wx:for="{{navList}}" wx:key='' ><slot name="box{{--index+1}}"></slot></view>
+</view>

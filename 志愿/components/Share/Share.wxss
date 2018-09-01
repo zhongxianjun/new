@@ -1,0 +1,26 @@
+/* .share{
+  position: fixed; z-index: 999;
+  top: 340rpx; left: -16rpx; 
+  display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;
+  padding: 0 25rpx; box-sizing: border-box;
+  height: 60rpx; border-radius: 30rpx;
+  color: white; font-size: 28rpx; white-space: nowrap;
+  background: linear-gradient(90deg,#419eff,#40b9fe); border-radius: 28rpx;
+}
+.transition{
+ transition: all  0.4s; 
+} */
+
+.share {
+  position: fixed; z-index: 99; bottom: 220rpx; right: 20rpx;
+  width: 100rpx; height: 100rpx; box-sizing: border-box;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #fa8628 0%, #fecd39 100%);
+  box-shadow: 0 9rpx 10rpx 0 rgba(250, 134, 41, 0.75);
+}
+
+.share image {
+  position: absolute; z-index: 97;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+}

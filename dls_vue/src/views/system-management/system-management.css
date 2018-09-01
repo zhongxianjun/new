@@ -1,0 +1,172 @@
+.advertisement-container .ivu-tabs-tabpane .container-box {
+  visibility: initial !important;
+}
+.advertisement-container .container-box {
+  padding: 10px 20px;
+}
+.advertisement-container .main-box .add-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.advertisement-container .main-box .add-search .add {
+  padding: 0 15px;
+  border: 1px solid #d9d9d9;
+  line-height: 32px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.advertisement-container .main-box table {
+  margin-top: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  text-align: center;
+}
+.advertisement-container .main-box table tr {
+  line-height: 24px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.advertisement-container .main-box table tr th {
+  padding: 16px 16px;
+  white-space: nowrap;
+  background-color: #fafafa;
+}
+.advertisement-container .main-box table tr:hover {
+  background-color: #e6f7ff;
+}
+.advertisement-container .main-box table tr td {
+  padding: 16px 16px;
+}
+.advertisement-container .main-box table tr td .ad-img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+  border-radius: 4px;
+}
+.advertisement-container .main-box table tr td.editor-delete-box .editor-delete-b {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.advertisement-container .main-box table tr td.editor-delete-box .editor-delete-b .editor-delete {
+  display: flex;
+  white-space: nowrap;
+  color: #419aff;
+}
+.advertisement-container .main-box table tr td.editor-delete-box .editor-delete-b .editor-delete .editor {
+  cursor: pointer;
+}
+.advertisement-container .main-box table tr td.editor-delete-box .editor-delete-b .editor-delete .delete {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.menu-container .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-container .top .update {
+  padding: 0 10px;
+  background-color: #1890ff;
+  line-height: 32px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.menu-container .table {
+  margin-top: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  text-align: center;
+  line-height: 24px;
+}
+.menu-container .table .thead {
+  background-color: #fafafa !important;
+}
+.menu-container .table .tr {
+  padding: 16px 16px;
+}
+.menu-container .table .tr .th {
+  white-space: nowrap;
+}
+.menu-container .table .tr {
+  border-bottom: 1px solid #f2f2f2;
+}
+.menu-container .table .tr:hover {
+  background-color: #e6f7ff;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b .editor-delete {
+  display: flex;
+  white-space: nowrap;
+  color: #419aff;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b .editor-delete .add {
+  cursor: pointer;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b .editor-delete .editor {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b .editor-delete .delete {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.menu-container .table .tr .td.editor-delete-box .editor-delete-b .editor-delete .delete .ivu-poptip-body {
+  text-align: initial;
+}
+.menu-container .table .ivu-collapse {
+  border: none;
+}
+.menu-container .table .ivu-collapse .ivu-collapse-header {
+  padding-left: 0;
+  height: auto;
+}
+.menu-container .table .ivu-collapse .ivu-collapse-header .ivu-icon-ios-arrow-forward {
+  position: absolute !important;
+  left: 10px;
+  top: 28px;
+}
+.menu-container .table .ivu-collapse .ivu-collapse-content {
+  padding: 0 0;
+}
+.menu-container .table .ivu-collapse .ivu-collapse-content .ivu-collapse-content-box {
+  padding-bottom: 0;
+}
+.menu-container .add-main-menu {
+  margin: 20px 0;
+  padding: 6px 0;
+  text-align: center;
+  border: 1px dashed #999;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menu-container .add-main-menu span {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.v-transfer-dom .ivu-modal-header-inner {
+  font-size: 16px;
+}
+.v-transfer-dom .parent-option {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.v-transfer-dom .add-menu-option {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+.v-transfer-dom .add-menu-option > p {
+  margin-bottom: 5px;
+}

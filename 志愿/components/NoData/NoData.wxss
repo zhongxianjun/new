@@ -1,0 +1,36 @@
+/* components/NoData/NoData.wxss */
+.noData{
+  padding-top: 10rpx; 
+  box-sizing: border-box;
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column;
+}
+.noData image{
+  width: 212rpx;
+  height: 198rpx;
+  margin: 0 auto;
+  /* margin-top: 314rpx; */
+  display: block;
+}
+.noData view{
+  font-size: 28rpx;
+  color: #b4c3cd;
+  text-align: center;
+  margin-top: 47rpx;
+}
+
+.middle image {
+  width: 159rpx; height: 148.5rpx;
+}
+.middle view {
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+
+.small image {
+  width: 119.25rpx; height: 111.375rpx;
+}
+.small view {
+  font-size: 20rpx;
+  margin-top: 20rpx;
+}

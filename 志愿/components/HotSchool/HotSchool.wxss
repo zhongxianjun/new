@@ -1,0 +1,54 @@
+.hot-school {
+  
+}
+.hot-school .title-box {
+  padding: 36rpx 0 40rpx 30rpx;
+}
+.hot-school .title-box .title {
+  position: relative;
+  padding: 0 0 0 21rpx;
+  line-height: 34rpx; font-size: 32rpx;
+}
+.hot-school .title-box .title::after {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  width: 5rpx; height: 34rpx; background-color: #4f90ff;
+	border-radius: 3rpx;
+}
+
+.select-current {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 0 30rpx;
+  width: 100%; box-sizing: border-box;
+}
+.select-current .item {
+  width: 208rpx;
+  height: 57rpx; line-height: 57rpx;
+  background-color: #f2f2f2; font-size: 24rpx;
+  border-radius: 8rpx; text-align: center;
+}
+.select-current .item.current {
+  color: #ffffff;
+  background: linear-gradient(90deg, #508eff 0%, #39bafe 100%);
+}
+
+.container-box {
+  height: auto;
+  overflow: hidden;
+}
+.slide {
+
+}
+.slide-item {
+  width: 100%;
+  animation: opacity 0.4s;
+  animation-fill-mode: forwards;
+}
+@keyframes opacity {
+  0% {
+      opacity: 0; 
+  }
+  100% {
+    opacity: 1; 
+  }
+}

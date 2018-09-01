@@ -1,0 +1,33 @@
+.hot-major {
+  
+}
+.hot-major .title-box {
+  padding: 36rpx 0 40rpx 30rpx;
+}
+.hot-major .title-box .title {
+  position: relative;
+  padding: 0 0 0 21rpx;
+  line-height: 34rpx; font-size: 32rpx;
+}
+.hot-major .title-box .title::after {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  width: 5rpx; height: 34rpx; background-color: #4f90ff;
+	border-radius: 3rpx;
+}
+
+.hot-major-container {
+
+}
+.hot-major-container .item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 30rpx 30rpx;
+  line-height: 50rpx; box-sizing: border-box;
+  border-top: 1px solid #f2f2f2;
+}
+.hot-major-container .item .left {
+  font-size: 28rpx;
+}
+.hot-major-container .item .right {
+  font-size: 24rpx; color: #a5a5a5;
+}

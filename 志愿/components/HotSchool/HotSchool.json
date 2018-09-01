@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "SchoolInfo": "/components/SchoolInfo/SchoolInfo",
+    "SchoolLine": "/components/SchoolLine/SchoolLine"
+  }
+}

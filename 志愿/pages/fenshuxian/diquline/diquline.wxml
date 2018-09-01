@@ -1,0 +1,38 @@
+<navigator wx:if="{{showhome}}" class="back-home" url="/pages/index/index" hover-class="none" open-type="redirect">
+  <image src="/images/home.png"></image>
+</navigator>
+
+
+<view class="year-box">
+  <block wx:for="{{yearList}}" wx:key="">
+    <view class="item{{currentYear === item.id ? ' current' : ''}}" data-id="{{item.id}}" bindtap="checkLine">{{item.value}}</view>
+  </block>
+</view>
+
+
+<view class="result-box" id="result-box">
+  <view class="result" id="result">
+    <block wx:for="{{resultList}}" wx:key="">
+      <view class="item-box">
+        <view class="item">考生类别：<span>{{item.type}}</span></view>
+        <view class="item">最低控制分数线：<span>{{item.score}}</span></view>
+        <view class="item" style="width: 100%;">批次：<span>{{item.bath}}</span></view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="ec-canvas-container">
+  <view class="pici-box">
+    <block wx:for="{{piciList}}" wx:key="">
+      <view class="item{{currentPici === item.id ? ' current' : ''}}" data-id="{{item.id}}" bindtap="checkPici">{{item.value}}</view>
+    </block>
+  </view>
+  <view class="ec-canvas-box">
+    <ec-canvas id="ec-canvas-dom" canvas-id="ec-canvas" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>
+
+<Vs id="school-vs" bottom="650rpx"></Vs>
+<Share id="share" bottom="770rpx"></Share>
+
+  

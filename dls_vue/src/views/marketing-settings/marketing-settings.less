@@ -1,0 +1,171 @@
+.advertisement-container {
+  .ivu-tabs-tabpane {
+    .container-box {
+      visibility: initial !important;
+    }
+  }
+  .container-box {
+    padding: 10px 20px;
+  }
+  .main-box {
+    .add-search {
+      display: flex; align-items: center; justify-content: space-between;
+      .add {
+        padding: 0 15px;
+        border: 1px solid rgb(217, 217, 217);
+        line-height: 32px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+
+    table {
+      margin-top: 12px;
+      width: 100%; box-sizing: border-box;
+      border-collapse: collapse;
+      border-radius: 6px 6px 0 0; overflow: hidden;
+      text-align: center;
+      tr {
+        line-height: 24px;
+        th {
+          padding: 16px 16px;
+          white-space: nowrap;
+          background-color: #fafafa;
+        }
+      }
+
+      tr {
+        td {
+          padding: 16px 16px;
+          .ad-img {
+            display: inline-block; vertical-align: middle;
+            width: 50%; border-radius: 4px;
+          }
+          &.editor-delete-box {
+            // display: flex; align-items: center; justify-content: center;
+            .editor-delete-b {
+              display: flex; justify-content: center;
+              width: 100%;
+              .editor-delete {
+                display: flex;
+                white-space: nowrap;
+                color: #419aff;
+                .editor {
+                  cursor: pointer;
+                }
+                .delete {
+                  margin-left: 10px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+   
+}
+
+.coupons-container {
+  .coupons-box {
+    display: flex; flex-wrap: wrap;
+    .coupon {
+      margin: 20px 20px 0 0; 
+      .content {
+        display: flex; align-items: center;
+        padding: 10px 0;
+        width: 248px; 
+        background: linear-gradient(90deg, #f4d64b, #fcb61e);
+        border-radius: 6px; font-size: 14px;
+        // background-color: #fd6d3b;
+        color: #fff;
+        .left {
+          padding-right: 5px;
+          width: 30%;
+          text-align: center;
+          .sum {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1;
+            span {
+              font-size: 36px;
+            }
+          }
+          .status {
+            
+          }
+        }
+        .right {
+          padding-left: 16px;
+          border-left: dashed 1px #fff;
+          aside {
+
+          }
+        }
+      }
+
+      .operate {
+        text-align: center; 
+        color: #419aff;
+        cursor: pointer;
+        line-height: 2;
+      }
+    }
+  }
+}
+
+.invoice-container {
+  .invoice-title {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px 6px;
+    border-bottom: 1px solid #eee;
+    p {
+
+    }
+    span {
+      color: #419aff;
+      cursor: pointer;
+    }
+  }
+  
+  .invoice-info {
+    width: 50%; min-width: 712px;
+    border: 1px solid #dddee1;
+    border-radius: 4px;
+  }
+
+  .invoice-address {
+    margin-top: 30px;
+    width: 50%; min-width: 712px;
+    border: 1px solid #dddee1;
+    border-radius: 4px;
+  }
+
+  .invoice-content {
+    position: relative;
+    padding: 10px 0 10px 60px;
+
+    aside {
+      display: flex; align-items: center;
+      padding: 10px 0;
+      h2 {
+        min-width: 75px;
+        text-align: right;
+        font-size: 14px; font-weight: normal;
+      }
+    }
+
+    .operation {
+      position: absolute; right: 10px; bottom: 5px;
+      display: flex; align-items: center; 
+      p {
+        margin: 0 5px;
+        padding: 5px 5px;
+        color: #419aff;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+<navigator class="school-vs" url="/pages/vs/vs" open-type="navigate" style="transition: transform 1s; bottom: {{bottom}}; {{hideVs ? 'transform: translateX(140rpx);' : ''}}">
+  <image src="/images/popup.png"></image>
+  <view class="vs-list">{{vsList.length}}</view>
+</navigator>

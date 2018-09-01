@@ -1,0 +1,26 @@
+<view>
+  <form class='choose'>
+      <SelectPicker name="所在地区" list="areaList" picker-index="{{areaIndex}}" bind:callback="setArea"></SelectPicker>
+      <SelectPicker name="录取批次" list="piciList" picker-index="{{piciIndex}}" width="317" bind:callback="setPici"></SelectPicker>
+    <view class='inquire'>
+      <button bind:tap="query">确认查询</button>
+    </view>
+  </form>
+
+  <view class='interval'> </view>
+
+  <view class='meg'>
+  
+  </view>
+</view> 
+<view class='nodata'  wx:if="{{schoolList.length==0}}"><NoData size='big'></NoData></view>
+ <HotSchool category="schoolinfo" wx:if="{{!schoolList && !isClick}}" bind:callback="vsCountBack"></HotSchool>
+ <block wx:for="{{schoolList}}" wx:key="" wx:for-index="index1" wx:for-item="item1" wx:if="{{!schoolList.length==0}}">
+    <SchoolInfo  school="{{item1}}" bind:callback="vsCountBack"></SchoolInfo>
+ </block>
+ <NoData wx:if="{{!schoolList && isClick }}" size='big'></NoData>
+
+
+<Vs id="school-vs"></Vs>
+
+<Share id="share"></Share>

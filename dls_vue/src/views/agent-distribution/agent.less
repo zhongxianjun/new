@@ -1,0 +1,90 @@
+.agent{
+    .tablist{
+        padding: 0 10px;
+        display: flex;
+        .all{
+            min-height: 38px;
+            line-height: 38px;
+            padding: 0 16px;
+            margin-right: 2px;
+            margin-bottom: 2px; 
+            text-align: center;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            &:hover{
+                span{
+                    color: #1890ff;
+                }
+            }
+            &.current{
+                margin-bottom: 0px;
+                span{
+                    color: #1890ff;
+                }
+            }
+            span{
+                font-size: 12px;
+                min-height: 18px;
+                line-height: 18px;
+                align-items: center;
+                margin-right: 10px;
+            }
+        }
+    }
+    .card{
+        margin: 0 10px 10px 10px;
+        min-height: 558px;
+        background: #fff;
+        flex: 1 1 0%;
+        .title{
+            font-size: 16px;
+            padding: 16px 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: rgba(0,0,0,.85);
+            font-weight: 500;
+            border-bottom: 1px solid rgb(198, 211, 222);
+        }
+        .content{
+            margin-top: 30px;
+            .header{
+                margin: 0 10px 0 5px; 
+                display: flex;
+                justify-content: space-between;
+                .btn{
+                    margin: 0 8px;
+                    display: flex;
+                }
+                .search{
+                    width: 320px;
+                    button{
+                        background: #2d8cf0;
+                        border-color: #2d8cf0; 
+                        border-top-left-radius: 0; 
+                        border-bottom-left-radius: 0;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .table{
+                margin: 30px 5px;
+                .page{
+                    text-align: right;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    .copyright{
+        text-align: center;
+        line-height: 93px;
+        color: rgba(0,0,0,.45);
+        font-size: 14px;
+    }
+}

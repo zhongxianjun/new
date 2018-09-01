@@ -1,0 +1,20 @@
+<view class="component-box">
+  <view class="component-item" id="component-item" style="transform: translateX({{translateX + laterX}}px); transition: transform {{transition ? '0.3s' : '0'}};" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:touchend="touchend">
+    <view class="content">
+      <view class="left">
+        <view class="icon">
+          <image src="{{school.Logo ? school.Logo: '/images/none.png'}}"></image>
+        </view>
+      </view>
+      <view class="right">
+        <view class="name">{{school.schoolname}}</view>
+        <view class="des">{{school.membership}}{{school.f985 !== '0' ? ' 985高校' : ''}}{{school.f211 !== '0' ? ' 211高校' : ''}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="function-box" style="transform: translateX({{translateX + laterX}}px); transition: transform {{transition ? '0.3s' : '0'}};">
+      <view class="change" capture-catch:tap="change">换一个</view>
+      <view class="delete" capture-catch:tap="delete">删除</view>
+      <view class="confirm-delete" capture-catch:tap="confirmDelete" style="left: {{confirmDelete ? '100%' : '200%'}}">确认删除</view>
+  </view>
+</view>

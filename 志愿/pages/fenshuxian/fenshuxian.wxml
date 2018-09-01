@@ -1,0 +1,99 @@
+<view class="fenshuxian-container">
+  <view class="select-current">
+    <block wx:for="{{selectName}}" wx:key="">
+      <view class="item{{index === current ? ' current' : ''}}" data-index="{{index}}" bindtap="selectCurrent">{{item}}</view>
+    </block>
+  </view>
+  <view class="container-box" id="12345">
+    <view class="slide">
+
+        <scroll-view scroll-y="{{true}}" class="slide-item" hidden="{{!(current === 0)}}" bindscroll="pageScroll">
+            <!-- <view class="select-condition-box">
+              <SelectPicker name="文理分科" list="{{wenliList}}" picker-index="{{wenliIndex}}" bind:callback="setWenli"></SelectPicker>
+              <SelectPicker name="年份" list="{{yearList}}" picker-index="{{yearIndex}}" bind:callback="setYear"></SelectPicker>
+              <SelectPicker name="所在地区" list="{{areaList}}" picker-index="{{areaIndex}}" bind:callback="setArea"></SelectPicker>
+              <SelectPicker name="录取批次" list="{{piciList}}" picker-index="{{piciIndex}}" width="317" bind:callback="setPici"></SelectPicker>
+            </view>
+            <view class="query-button-box">
+              <view class="query-button" bindtap="checkPiciLine">确认查询</view>
+            </view>
+            <view style="margin-top: 36rpx; height: 16rpx; background-color: #f2f2f2;"></view> -->
+            <view class="area-line-result result-line-box">
+                <block wx:for="{{areaList}}" wx:key="">
+                  <navigator class="area-result-item-box" url="/pages/fenshuxian/diquline/diquline?&areaId={{item.id}}&name={{item.value}}">
+                    <view class="area-result-item">
+                      <view class="left">{{item.value}}</view>
+                      <view class="right">查看详情</view>
+                    </view>
+                  </navigator>
+                </block>
+            </view>
+          </scroll-view>
+
+        <view class="slide-item" hidden="{{!(current === 1)}}">
+            <ScrollView id="school-rseult" params="{{schoolRseultUrl}}" lowerThreshold="100" width="100%" height="calc(100vh - 118rpx)" bind:callback="schoolLineBack" bind:scroll="pageScroll">
+                <view class="select-condition-box">
+                    <SelectPicker name="文理分科" list="wenliList" picker-index="{{wenliIndex}}" bind:callback="setWenli"></SelectPicker>
+                    <SelectPicker name="年份" list="yearList" picker-index="{{yearIndex}}" bind:callback="setYear"></SelectPicker>
+                    <SelectPicker name="院校所在地" list="areaList" picker-index="{{locationIndex}}" bind:callback="setLocation" width="150"></SelectPicker>
+                    <SelectPicker name="考生所在地" list="areaList" picker-index="{{areaIndex}}" bind:callback="setArea" width="150"></SelectPicker>
+                    <SelectPicker name="录取批次" list="piciList" picker-index="{{piciIndex}}" width="317" bind:callback="setPici"></SelectPicker>
+                  </view>
+                  <view class="query-button-box">
+                    <view class="query-button" bindtap="checkSchoolLine">确认查询</view>
+                  </view>
+                  <view style="margin-top: 36rpx; height: 16rpx; background-color: #f2f2f2;"></view>
+          
+                  <HotSchool wx:if="{{!hotSchool}}" category="schoolinfo" bind:callback="vsCountBack"></HotSchool>
+                  <view wx:if="{{schoolRseultList.length}}" class="school-line-result result-line-box">
+                    <view class="title-box">
+                      <view class="title">查询结果</view>
+                    </view>
+                    <view class="school-line">
+                      <block wx:for="{{schoolRseultList}}" wx:key="item">
+                        <SchoolLine school="{{item}}" bind:callback="vsCountBack"></SchoolLine>
+                      </block>
+                    </view>
+                  </view>
+                  <NoData wx:if="{{schoolLineShow}}" size="big"></NoData>
+            </ScrollView>
+        </view>
+
+
+        <view class="slide-item" hidden="{{!(current === 2)}}">
+            <ScrollView id="major-rseult" params="{{majorRseultUrl}}" lowerThreshold="100" width="100%" height="calc(100vh - 118rpx)" bind:callback="majorLineBack" bind:scroll="pageScroll">
+                <view class="select-condition-box">
+                  <SelectPicker name="专业大类" list="bigClassList" picker-index="{{bigClassIndex}}" width="360" bind:callback="setBigClass"></SelectPicker>
+                  <SelectPicker id="small-class" name="专业小类" list="smallClassList"  width="420" bind:callback="setSmallClass"></SelectPicker>
+                  <SelectPicker name="文理分科" list="wenliList" picker-index="{{wenliIndex}}" bind:callback="setWenli"></SelectPicker>
+                  <SelectPicker name="年份" list="yearList" picker-index="{{yearIndex}}" bind:callback="setYear"></SelectPicker>
+                  <SelectPicker name="考生所在地" list="areaList" picker-index="{{areaIndex}}" bind:callback="setArea"></SelectPicker>
+                  <!-- <SelectPicker name="录取批次" list="piciList" picker-index="{{piciIndex}}" width="317" bind:callback="setPici"></SelectPicker> -->
+                </view>
+                <view class="query-button-box">
+                  <view class="query-button" bindtap="checkMajorLine">确认查询</view>
+                </view>
+                <view style="margin-top: 36rpx; height: 16rpx; background-color: #f2f2f2;"></view>
+        
+                <HotMajor wx:if="{{!hotMajor}}"></HotMajor>
+                <view wx:if="{{majorRseultList.length}}" class="major-line-result result-line-box">
+                  <view class="title-box">
+                    <view class="title">查询结果</view>
+                  </view>
+                  <view class="major-line">
+                    <block wx:for="{{majorRseultList}}" wx:key="item">
+                      <MajorLine school="{{item}}" bind:callback="vsCountBack"></MajorLine>
+                    </block>
+                  </view>
+                </view>
+                <NoData wx:if="{{majorLineShow}}" size="big"></NoData> 
+            </ScrollView>
+        </view>
+
+        
+    </view>
+  </view>
+</view>
+
+<Vs id="school-vs"></Vs>
+<Share id="share"></Share>

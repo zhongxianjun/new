@@ -1,0 +1,15 @@
+<view class='power_wrap' wx:if="{{shows || me_show}}">
+  <view class='power_box'>
+    <!-- <view class='power_head'>微信授权</view> -->
+    <view class='power_body'>
+      <image src='/images/power.png'></image>
+      <!-- <view class='power_titles'>需申请获得以下权限：</view> -->
+      <view class='power_tips'>
+        <text wx:if="{{!me_show}}">点击允许将获取您的头像等公开信息 </text>
+        
+        <slot wx:else></slot>
+      </view> 
+      <button hover-class='hover' class='power_btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo">允许</button>
+    </view>
+  </view>
+</view>

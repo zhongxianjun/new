@@ -1,0 +1,189 @@
+.advertisement-container {
+  .ivu-tabs-tabpane {
+    .container-box {
+      visibility: initial !important;
+    }
+  }
+  .container-box {
+    padding: 10px 20px;
+  }
+  .main-box {
+    .add-search {
+      display: flex; align-items: center; justify-content: space-between;
+      .add {
+        padding: 0 15px;
+        border: 1px solid rgb(217, 217, 217);
+        line-height: 32px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+
+    table {
+      margin-top: 12px;
+      width: 100%; box-sizing: border-box;
+      border-collapse: collapse;
+      border-radius: 6px 6px 0 0; overflow: hidden;
+      text-align: center;
+      tr {
+        line-height: 24px;
+        border-bottom: 1px solid #f2f2f2;
+        th {
+          padding: 16px 16px;
+          white-space: nowrap;
+          background-color: #fafafa;
+        }
+      }
+
+      tr {
+        &:hover {
+          background-color: #e6f7ff;
+        }
+        td {
+          padding: 16px 16px;
+          .ad-img {
+            display: inline-block; vertical-align: middle;
+            width: 50%; border-radius: 4px;
+          }
+          &.editor-delete-box {
+            // display: flex; align-items: center; justify-content: center;
+            .editor-delete-b {
+              display: flex; justify-content: center;
+              width: 100%;
+              .editor-delete {
+                display: flex;
+                white-space: nowrap;
+                color: #419aff;
+                .editor {
+                  cursor: pointer;
+                }
+                .delete {
+                  margin-left: 10px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } 
+}
+
+.menu-container {
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    .update {
+      padding: 0 10px; 
+      background-color: #1890ff; line-height: 32px;
+      border-radius: 5px; color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  .table {
+    margin-top: 12px;
+    width: 100%; box-sizing: border-box;
+    border-collapse: collapse;
+    border-radius: 6px 6px 0 0; overflow: hidden;
+    text-align: center;
+    line-height: 24px;
+    .thead {
+      background-color: #fafafa !important;
+    }
+    .tr {
+      padding: 16px 16px;
+      .th {
+        white-space: nowrap;
+      }
+    }
+
+    .tr {
+      border-bottom: 1px solid #f2f2f2;
+      &:hover {
+        background-color: #e6f7ff;
+      }
+      .td {
+        &.editor-delete-box {
+          // display: flex; align-items: center; justify-content: center;
+          .editor-delete-b {
+            display: flex; justify-content: center;
+            width: 100%;
+            .editor-delete {
+              display: flex;
+              white-space: nowrap;
+              color: #419aff;
+              .add {
+                cursor: pointer;
+              }
+              .editor {
+                margin-left: 10px;
+                cursor: pointer;
+              }
+              .delete {
+                margin-left: 10px;
+                cursor: pointer;
+
+                .ivu-poptip-body {
+                  text-align: initial;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ivu-collapse {
+      border:  none;
+      .ivu-collapse-header {
+        padding-left: 0;
+        height: auto;
+        .ivu-icon-ios-arrow-forward {
+            position: absolute !important; left: 10px; top: 28px;
+        }
+      }
+      .ivu-collapse-content {
+        padding: 0 0;
+        .ivu-collapse-content-box {
+          padding-bottom: 0;
+        }
+      }
+    }
+    
+
+  }
+
+  .add-main-menu {
+    margin: 20px 0; 
+    padding: 6px 0;
+    text-align: center;
+    border: 1px dashed #999;
+    border-radius: 5px;
+    cursor: pointer;
+    span {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    font-size: 16px;
+  }
+
+  
+}
+
+.v-transfer-dom {
+  .ivu-modal-header-inner {
+    font-size: 16px;
+  }
+  .parent-option {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  .add-menu-option {
+    margin-bottom: 18px;
+    font-size: 16px;
+    >p {
+      margin-bottom: 5px;
+    }
+  }
+}

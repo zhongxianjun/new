@@ -1,0 +1,30 @@
+<view class="component-item">
+  <view class="content" bindtap="checkLine">
+    <view class="left">
+      <view class="icon">
+        <image src="{{school.Logo ? school.Logo: '/images/none.png'}}"></image>
+      </view>
+      <view class="name">{{school.schoolname}}</view>
+    </view>
+    <view class="right">{{(height > 0) ? '收起' : '查看详情'}}</view>
+  </view>
+  <view class="details-box" id="details-box" style="height: {{height}}px">
+    <view class="details" id="details">
+      <block wx:for="{{line}}" wx:key="">
+        <view class="sort-box">
+          <view class="sort" style="width: 100%;">{{item.batch}}<text>　</text>{{item.studenttype}}</view>
+          <view class="sort">最高分：<span>{{item.max !== '0' ? item.max : '暂无'}}</span></view>
+          <view class="sort">平均分：<span>{{item.var !== '0' ? item.var : '暂无'}}</span></view>
+          <view class="sort">最低分：<span>{{item.min !== '0' ? item.min : '暂无'}}</span></view>
+        </view>
+      </block>
+      <view wx:if="{{!line}}">
+          <NoData></NoData>
+      </view>
+      <view class="check-add">
+        <navigator class="check to" open-type="navigate" url="/pages/university/university?id={{school.ID}}">院校详情</navigator>
+        <view class="add to" bindtap="addVs">加入对比</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+<view class="school-vs-box">
+  <view class="left">
+    <view class="school-name">
+      <view class="icon">
+        <image src="/images/duijue.png"></image>
+      </view>
+    </view>
+    <view class="middle-cut middle-middle-cut">综合参数</view>
+    <view class="params">类型</view>
+    <view class="params">所在地</view>
+    <view class="params">是否985</view>
+    <view class="params">是否211</view>
+    <view class="params">院校隶属</view>
+    <view class="params">国家重点学科</view>
+    <view class="params">硕士点</view>
+    <view class="params">博士点</view>
+    <view class="params">学校简介</view>
+    <view class="params jianjie">简介</view>
+  </view>
+  <view class="right">
+    <view class="school-container" style="width: {{256 * resultList.length}}rpx;">
+      <block wx:for="{{resultList}}" wx:key="">
+          <view class="school-box">
+              <view class="school-name">
+                <view class="icon">
+                  <image src="{{item.Logo ? item.Logo : '/images/none.png'}}"></image>
+                </view>
+                <view class="title">{{item.schoolname}}</view>
+              </view>
+              <view class="middle-cut"></view>
+              <view class="params">{{item.schoolproperty}}</view>
+              <view class="params">{{item.province}}</view>
+              <view class="params{{item.f985 !== '0' ? ' keypoint' : ''}}">{{item.f985 !== '0' ? '是' : '否'}}</view>
+              <view class="params{{item.f211 !== '0' ? ' keypoint' : ''}}">{{item.f211 !== '0' ? '是' : '否'}}</view>
+              <view class="params member">
+                <view>{{item.membership}}</view>
+              </view>
+              <view class="params{{item.KeySubject !== '0' ? ' keypoint' : ''}}">{{item.KeySubject}}</view>
+              <view class="params{{item.MasterPilot !== '0' ? ' keypoint' : ''}}">{{item.MasterPilot}}</view>
+              <view class="params{{item.DoctorStation !== '0' ? ' keypoint' : ''}}">{{item.DoctorStation}}</view>
+              <navigator class="params details" url="/pages/university/university?id={{item.ID}}" open-type="navigate">查看详情</navigator>
+              <view class="params jianjie">
+                <view>
+                  <rich-text nodes="{{item.jianjie}}"></rich-text>
+                  <!-- {{item.jianjie}} -->
+               </view>
+              </view>
+          </view>
+      </block>
+    </view>
+  </view>
+</view>

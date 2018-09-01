@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "院校",
+  "usingComponents": {
+    "ScrollView": "/components/ScrollView/ScrollView",
+    "SchoolInfo": "/components/SchoolInfo/SchoolInfo"
+  }
+}
