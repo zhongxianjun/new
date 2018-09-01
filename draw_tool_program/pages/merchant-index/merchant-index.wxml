@@ -1,0 +1,25 @@
+<!-- pages/merchant-index/merchant-index.wxml -->
+<view class="merchant_index">
+    <!-- 头部引入 -->
+    <header id="header" text="小程序"></header>
+    <!-- 商家首页展示 -->
+    <view class="main">
+        <view class='count_state'>
+            <view class="count {{item.text=='消费人数'?'border':''}}" wx:for="{{userData}}" wx:key="{{index}}">
+                <view class='num'>{{item.data}}</view>
+                <view class="text">{{item.text}}</view>
+            </view>
+        </view>
+        <view class="container">
+            <navigator wx:for="{{moduleCss}}" wx:key="{{index}}" url="{{item.text == '优惠验证'?'/pages/validation/validation':''}}{{item.text == '中奖登记'?'/pages/validation/validation':''}}{{item.text == '设置奖品'?'/pages/set-prize/set-prize':''}}{{item.text == '设置优惠'?'/pages/set-preferential/set-preferential':''}}">
+                <view class='module' style="background-color: {{item.background}}">
+                    <view class="text" style="color: {{item.textColor}}">{{item.text}}</view>
+                    <view class="English" style="color: {{item.EnglishColor}}">
+                        {{item.EnglishText}}
+                    </view>
+                    <image src="./../../assets/images/boss_index_0{{index+1}}.png" mode="widthFix" />
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/choose-preferential/choose-preferential",
+    "pages/lucky-draw/lucky-draw",
+    "pages/validation/validation",
+
+    "pages/merchant-index/merchant-index",
+    "pages/set-preferential/set-preferential",
+    "pages/winning-list/winning-list",
+    "pages/set-prize/set-prize"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  }
+}

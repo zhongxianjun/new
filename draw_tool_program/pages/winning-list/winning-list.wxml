@@ -1,0 +1,23 @@
+<!-- pages/winning-list/winning-list.wxml -->
+<view class="winningList">
+    <!-- 头部引入 -->
+    <header id="header" text="中奖列表"></header>
+    <view class='container'>
+        <view class='top_nav' bindtab="setSlideIndex">
+            <text wx:for="{{navData}}" wx:for-index="i" wx:key="{{i}}" class="{{index==i?'on':''}}" bindtap="setSlideIndex" data-index="{{i}}">
+                {{item.text}}
+            </text>
+        </view>
+        <swiper class='list_contanier' bindchange='onSlideChangeEnd' current='{{index}}'>
+            <swiper-item wx:for="{{winning_list}}" wx:for-item="list" wx:for-index="key" wx:key="{{key}}">
+                <view class='winning_list'>
+                    <view class='item' wx:for="{{list.awiat_list}}" wx:key="{{index}}">
+                        <image mode="aspectFit" src="{{item.src}}" />
+                        <text class='name'>{{item.name}}</text>
+                        <text class='prize'>{{item.prize}}</text>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

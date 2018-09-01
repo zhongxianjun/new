@@ -1,0 +1,16 @@
+/* components/header/header.wxss */
+.topHeader {
+  width: 100vw;
+  height: 112rpx;
+  line-height: 112rpx;
+  text-align: center;
+  padding-top: 30rpx;
+  background: #fff;
+}
+.topHeader image {
+  position: fixed;
+  left: 30rpx;
+  top: 66rpx;
+  width: 39rpx;
+  z-index: 9999;
+}

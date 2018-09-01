@@ -1,0 +1,62 @@
+/* pages/winning-list/winning-list.wxss */
+.contanier {
+  padding-top: 32rpx;
+}
+.top_nav {
+  font-size: 32rpx;
+  color: #b5b3c4;
+  border-bottom: 1rpx solid #f3f3f3;
+}
+.top_nav text {
+  width: 154rpx;
+  text-align: center;
+  display: inline-block;
+  line-height: 90rpx;
+  position: relative;
+}
+.top_nav text.on {
+  font-size: 36rpx;
+  color: #323232;
+}
+.top_nav text.on:after {
+  content: "";
+  display: inline-block;
+  height: 8rpx;
+  width: 44rpx;
+  background: #6f5bde;
+  border-radius: 4rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -22rpx;
+  bottom: 0rpx;
+}
+
+.list_contanier {
+  height: calc(100vh - 92rpx);
+}
+
+.winning_list {
+  padding: 20rpx 30rpx;
+}
+.winning_list .item {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0;
+  line-height: 60rpx;
+}
+.winning_list .item image {
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: #eee;
+}
+.winning_list .item .name {
+  color: #323232;
+  font-size: 32rpx;
+  flex-grow: 1;
+}
+.winning_list .item .prize {
+  color: #6f5bde;
+  font-size: 28rpx;
+}

@@ -1,0 +1,82 @@
+/* pages/merchant-index/merchant-index.wxss */
+.merchant_index {
+  width: 100vw;
+}
+
+.merchant_index .main {
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 24rpx;
+}
+.merchant_index .main .count_state {
+  width: 100%;
+  display: flex;
+  margin-bottom: 104rpx;
+}
+.merchant_index .main .count_state .count {
+  width: 206rpx;
+  text-align: center;
+  display: flex;
+  flex-flow: wrap column;
+}
+.merchant_index .main .count_state .border {
+  position: relative;
+  width: 270rpx;
+}
+.merchant_index .main .count_state .border::before {
+  content: "";
+  height: 70rpx;
+  display: inline-block;
+  border-left: 1rpx solid #cdcdcd;
+  position: absolute;
+  top: 28rpx;
+  left: 0;
+}
+.merchant_index .main .count_state .border::after {
+  content: "";
+  height: 70rpx;
+  display: inline-block;
+  border-right: 1rpx solid #cdcdcd;
+  position: absolute;
+  top: 28rpx;
+  right: 0;
+}
+.merchant_index .main .count_state .count .num {
+  font-size: 60rpx;
+  color: #323232;
+}
+.merchant_index .main .count_state .count .text {
+  font-size: 24rpx;
+  color: #b5b3c4;
+  margin-top: 8rpx;
+}
+
+.merchant_index .main .container {
+  margin-top: 140rpx;
+}
+.merchant_index .main .container .module {
+  width: 690rpx;
+  min-height: 188rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  position: relative;
+  margin-top: 36rpx;
+}
+.merchant_index .main .container .module .text {
+  font-size: 36rpx;
+  line-height: 60rpx;
+  margin-left: 48rpx;
+}
+.merchant_index .main .container .module .English {
+  font-size: 32rpx;
+  line-height: 60rpx;
+  margin-left: 48rpx;
+}
+.merchant_index .main .container .module image {
+  width: 118rpx;
+  position: absolute;
+  right: 48rpx;
+  top: -14rpx;
+}

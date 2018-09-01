@@ -1,0 +1,25 @@
+<!-- pages/set-prize/set-prize.wxml -->
+<view class="set_prize">
+    <!-- 头部引入 -->
+    <header id="header" text="设置奖品"></header>
+    <!-- 设置奖品页面展示 -->
+    <view class="main">
+        <scroll-view scroll-y="{{true}}" class="container">
+            <view class="prize_list">
+                <view class="list" wx:for="{{prizeList}}" wx:key="{{index}}">
+                    <view class="top">
+                        <view class="level">
+                            <input type="text" value="{{item.level}}" data-index="{{index}}"  data-title="level" bindblur="doubleBind" />
+                        </view>
+                        <view class="delete" bindtap="delete" data-index="{{index}}">删除</view>
+                    </view>
+                    <view class="bottom">
+                        <input type="text" placeholder="奖品名称" value="{{item.prizeName}}" data-index="{{index}}" data-title="prizeName" bindblur="doubleBind" />
+                        <input type="text" placeholder="最低消费金额" value="{{item.price}}" data-index="{{index}}" data-title="price" bindblur="doubleBind" />
+                    </view>
+                </view>
+            </view>
+            <view class="footer" bindtap="add">增加一个新的奖项</view>
+        </scroll-view>
+    </view>
+</view>

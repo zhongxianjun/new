@@ -1,0 +1,139 @@
+/* choose-preferential.wxss */
+.redEnvelope {
+  width: 100%;
+  height: 100vh;
+}
+
+.redEnvelope .main {
+  width: 100%;
+}
+.redEnvelope .main .container {
+  height: calc(100vh - 142rpx);
+}
+.redEnvelope .main .container .redEnvelope_list {
+  width: 100%;
+}
+.redEnvelope .main .container .redEnvelope_list .list {
+  width: 690rpx;
+  min-height: 261rpx;
+  margin: 30rpx auto;
+  background-image: linear-gradient(90deg, #ff4e5d 0%, #ff6043 100%),
+    linear-gradient(#ffffff, #ffffff);
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(255, 79, 92, 0.4);
+  border-radius: 20rpx;
+  position: relative;
+}
+.redEnvelope .main .container .redEnvelope_list .list image {
+  width: 148rpx;
+  height: 145rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content {
+  width: 635rpx;
+  height: 261rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content .text {
+  min-height: 144rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content .text text {
+  width: 100%;
+  font-size: 24rpx;
+  color: #fff;
+}
+.redEnvelope
+  .main
+  .container
+  .redEnvelope_list
+  .list
+  .content
+  .text
+  text.money {
+  font-size: 70rpx;
+  margin: 10rpx 0;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content button {
+  width: 191rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  background-color: #ffffff;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(255, 79, 92, 0.4);
+  border-radius: 38rpx;
+}
+.redEnvelope .main .footer {
+  width: 100%;
+  font-size: 28rpx;
+  color: #ff4e5c;
+  text-align: center;
+  margin: 44rpx 0 20rpx;
+}
+
+/* 弹窗样式 */
+.redEnvelope .popUp {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.redEnvelope .popUp .container {
+  width: 500rpx;
+  min-height: 484rpx;
+  margin: 0 auto;
+  margin-top: 50%;
+  background: #fff;
+  border-radius: 16rpx;
+  animation: landing 0.15s;
+}
+.redEnvelope .popUp .container .Qrcode {
+  width: 248rpx;
+  margin: 0 auto;
+  padding-top: 46rpx;
+  margin-bottom: 46rpx;
+  text-align: center;
+  font-size: 48rpx;
+}
+.redEnvelope .popUp .container .Qrcode .code {
+  width: 248rpx;
+  height: 248rpx;
+  background: #000;
+  margin-bottom: 22rpx;
+}
+.redEnvelope .popUp .container .tip {
+  font-size: 28rpx;
+  color: #ff4e5c;
+  text-align: center;
+  padding-bottom: 30rpx;
+}
+.redEnvelope .popUp .close {
+  width: 88rpx;
+  margin: 0 auto;
+  margin-top: 44rpx;
+  animation: rising 0.15s;
+}
+
+@keyframes rising {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes landing {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

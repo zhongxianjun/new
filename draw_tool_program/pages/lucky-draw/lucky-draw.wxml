@@ -1,0 +1,103 @@
+<!-- pages/lucky-draw/lucky-draw.wxml -->
+<view class="luckyDraw">
+    <!-- S 头部设计 -->
+    <view class="header">
+        <navigator open-type="navigateBack" hover-class="none">
+            <image class="back" src="./../../assets/images/left_arrow_white.png" mode="widthFix" />
+        </navigator>
+        <image class="bg" src="./../../assets/images/lukey_header_bg.png" />
+        <text>抽奖</text>
+    </view>
+    <!-- E 头部设计 -->
+    <!-- S 页面背景 -->
+    <view class="pageBg">
+        <image class="first" src="./../../assets/images/lukey_bg_01.png" mode="widthFix" />
+        <image class="second" src="./../../assets/images/lukey_bg_02.png" mode="widthFix" />
+        <image class="three" src="./../../assets/images/lukey_bg_03.png" mode="widthFix" />
+        <image class="four" src="./../../assets/images/lukey_bg_04.png" mode="widthFix" />
+    </view>
+    <!-- E 页面背景 -->
+    <!-- S 主体内容 -->
+    <view class="main">
+        <navigator url="/pages/choose-preferential/choose-preferential">
+            <view class="myPrize">我的奖品</view>
+        </navigator>
+        <!-- S 走马灯 -->
+        <view class="lamp">
+            <view class="top">
+                <view class="content" wx:for="{{[1,2,3,4,5,6]}}" wx:key="{{index}}">
+                    <vie class="{{flashing?'white':'yellow'}}"></vie>
+                    <view class="{{flashing?'yellow':'white'}}"></view>
+                </view>
+            </view>
+            <view class="right">
+                <view class="content" wx:for="{{[1,2]}}" data-index="{{index}}" wx:key="{{index}}" style="transform: rotateZ({{index == 1?'':'-'}}15deg);">
+                    <view class="{{flashing?'yellow':'white'}}"></view>
+                    <vie class="{{flashing?'white':'yellow'}}"></vie>
+                </view>
+            </view>
+            <view class="bottom">
+                <view class="content" wx:for="{{[1,2,3,4,5,6]}}" wx:key="{{index}}">
+                    <view class="{{flashing?'yellow':'white'}}"></view>
+                    <vie class="{{flashing?'white':'yellow'}}"></vie>
+                </view>
+            </view>
+            <view class="left">
+                <view class="content" wx:for="{{[1,2]}}" data-index="{{index}}" wx:key="{{index}}" style="transform: rotateZ({{index == 1?'-':''}}15deg);">
+                    <view class="{{flashing?'yellow':'white'}}"></view>
+                    <vie class="{{flashing?'white':'yellow'}}"></vie>
+                </view>
+            </view>
+        </view>
+        <!-- E 走马灯 -->
+        <!-- S 红包列表 -->
+        <view class="prizeContent">
+            <view class="prizeList" wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+                <view class="red-envelope" wx:for="{{redEnvelopeList}}" wx:key="{{index}}">
+                    <image src="./../../assets/images/red_envelope.png" mode="widthFix" />
+                    <text>{{item.text}}等奖</text>
+                </view>
+            </view>
+        </view>
+        <!-- E 红包列表 -->
+        <!-- S 按钮 -->
+        <view class="btn" bindtap="pressBtn">
+            <image src="./../../assets/images/btn.png" mode="widthFix" hidden="{{!show}}" class="up" />
+            <image src="./../../assets/images/btn_press.png" mode="widthFix" hidden="{{show}}" class="press" />
+            <view class="text">
+                <view class="left">
+                    <text class="chance">剩余机会</text>
+                    <text class="times">3</text>
+                </view>
+                <view class="right">
+                    <button type="default" plain="true" hover-class="none" open-type="share">
+                        分享继续玩
+                    </button>
+                </view>
+            </view>
+        </view>
+        <!-- E 按钮 -->
+        <!-- S 获奖记录 -->
+        <view class="winning-record">
+            <view class="title">
+                <text>--</text>
+                <text>中奖纪录（已有5017336人中奖）</text>
+                <text>--</text>
+            </view>
+            <swiper interval="1500" duration="1500" circular="true" vertical="true" previous-margin="15rpx" next-margin="15rpx" autoplay="true">
+                <block wx:for="{{winInfo}}" wx:key="{{index}}">
+                    <swiper-item class="container">
+                        <view class="list">
+                            <view class="date">{{item.date}}</view>
+                            <view class="time">{{item.time}}</view>
+                            <view class="phone">{{item.phone}}</view>
+                            <view class="prize">获得{{item.prize}}！</view>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <!-- E 获奖记录 -->
+    </view>
+    <!-- E 主体内容 -->
+</view>

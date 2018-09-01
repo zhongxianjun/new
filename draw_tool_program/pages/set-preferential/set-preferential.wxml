@@ -1,0 +1,27 @@
+<!-- choose-preferential.wxml -->
+<view class="redEnvelope">
+  <!-- 头部引入 -->
+  <header id="header" text="设置优惠"></header>
+  <!-- 红包页面展示 -->
+  <view class="main">
+    <scroll-view scroll-y="{{true}}" class="container">
+      <view class="redEnvelope_list">
+        <view class="list" wx:for="{{envelopeList}}" wx:key="{{index}}">
+          <image src="./../../assets/images/money_left.png" />
+          <view class="content">
+            <view class="text">满</view>
+            <input type="number" value="{{item.full}}" data-index="{{index}}" data-title="full" bindblur="doubleBind" />
+            <view class="text">减</view>
+            <input type="number" value="{{item.reduce}}" data-index="{{index}}" data-title="reduce" bindblur="doubleBind" />
+          </view>
+          <icon type="cancel" size="24" color="#fff" bind:tap="open" data-index="{{index}}"></icon>
+          <!-- 弹窗展示 -->
+          <view class="popUp" wx:if="{{current == index? show: false}}" catch:tap="close">
+            <view class="close" catch:tap="delete">删除</view>
+          </view>
+        </view>
+      </view>
+      <view class="footer" bindtap="add">+ 增加一张新的优惠券</view>
+    </scroll-view>
+  </view>
+</view>

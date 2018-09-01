@@ -1,0 +1,7 @@
+<!-- components/header/header.wxml -->
+<view class="topHeader">
+    <navigator open-type="navigateBack" hover-class="none">
+        <image src="./../../assets/images/left_arrow.png" mode="widthFix" />
+    </navigator>
+    <text> {{text}} </text>
+</view>

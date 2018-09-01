@@ -1,0 +1,84 @@
+/* pages/validation/validation.wxss */
+.validation {
+  padding-top: 82rpx;
+}
+.validation .main form {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.validation .main form input {
+  height: 94rpx;
+  width: 94rpx;
+  border: 1px solid #cdcdcd;
+  border-radius: 8rpx;
+  display: inline-block;
+  line-height: 94px;
+  text-align: center;
+  font-size: 48rpx;
+  color: #323232;
+  margin: 0 8rpx;
+}
+.validation .main form .hidden_ipt {
+  height: 0rpx;
+  width: 0rpx;
+  border: none;
+  margin: 0;
+}
+
+.scan_code {
+  width: 400rpx;
+  height: 98rpx;
+  margin: 0 auto;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background: #6f5bde;
+  text-align: center;
+  border-radius: 50rpx;
+  margin-top: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scan_code image {
+  height: 40rpx;
+  width: 40rpx;
+  display: inline-block;
+  margin-right: 24rpx;
+}
+
+.layer_prompt {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+}
+.layer_prompt .content {
+  background: #fff;
+  width: 70%;
+  text-align: center;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  margin-top: 280rpx;
+  padding-top: 58rpx;
+}
+.layer_prompt .content icon {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 34rpx;
+}
+.layer_prompt .content text {
+  font-size: 32rpx;
+  color: #323232;
+}
+.layer_prompt .content .comfirm {
+  font-size: 28rpx;
+  color: #6f5bde;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-top: 1rpx solid #f3f3f3;
+  margin-top: 60rpx;
+}

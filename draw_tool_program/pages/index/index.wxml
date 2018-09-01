@@ -1,0 +1,85 @@
+<!-- index.wxml -->
+<view class="index">
+  <!-- 头部设计 -->
+  <view class="topHeader">
+    <navigator open-type="navigateBack" hover-class="none">
+      <image class="back" src="./../../assets/images/left_arrow_white.png" mode="widthFix" />
+    </navigator>
+    <image class="bg" src="./../../assets/images/navigation_bg.png" />
+    <text>小程序</text>
+  </view>
+  <!-- 首页展示 -->
+  <view class="header">
+    <image src="./../../assets/images/index_bg.png" mode="widthFix" />
+    <navigator url="/pages/choose-preferential/choose-preferential" hover-class="none">
+      <view class="preferential">我的优惠</view>
+    </navigator>
+  </view>
+  <view class="main">
+    <view class="container">
+      <view class="btn">
+        <button type="default" plain="true" size="mini" class="top" bindtap="openShare">
+          分享给好友
+        </button>
+        <navigator url="/pages/lucky-draw/lucky-draw" hover-class="none">
+          <button type="default" plain="true" size="mini" class="bottom">已有3次抽奖机会，立即抽奖</button>
+        </navigator>
+      </view>
+      <view class="details">
+        <view class="title">活动详情</view>
+        <view class="content">
+          <text>1.付款成功即为确认参团；</text>
+          <text>2.请在开团后7日内完成组团；</text>
+          <text>3.组团成功后，从各自确认领取时间开始计算；</text>
+          <text>4.请使用微信账号登陆PP题库使用；</text>
+          <text>5.若组团失败，将全额退款至您的微信账户。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 分享组件 -->
+  <view class="share" wx:if="{{shareShow}}">
+    <view class="shareBg" bindtap="closeShare"></view>
+    <view class="bottom">
+      <view class="content">
+        <button type="default" plain="true" open-type="share">
+          <view class="wechat">
+            <view class="bg">
+              <image src="./../../assets/images/wechat.png" mode="widthFix" />
+            </view>
+            <text>分享给好友</text>
+          </view>
+        </button>
+        <button type="default" plain="true" bindtap="openPoster">
+          <view class="posters">
+            <view class="bg">
+              <image src="./../../assets/images/share_posters.png" mode="widthFix" />
+            </view>
+            <text>生成海报</text>
+          </view>
+        </button>
+      </view>
+    </view>
+  </view>
+  <!-- 海报组件 -->
+  <view class="poster" wx:if="{{posterShow}}">
+    <view class="posterBg" bindtap="closePoster"></view>
+    <view class="content">
+      <image src="./../../assets/images/poster_banner.png" mode="widthFix" />
+      <view class="text">
+        <view class="title">大润发独家优惠来啦！扫码即可领取500元购物卡</view>
+        <view class="QrCode">
+          <view class="code"></view>
+          <text>长按识别小程序码 领取商家优惠</text>
+        </view>
+        <view class="classfyList">
+          <view class="classfy" wx:for="{{classfyList}}" wx:key="{{item}}">
+            <text>{{item}}</text>
+          </view>
+        </view>
+        <view class="address">地址：湖南省长沙市友谊中路234号</view>
+      </view>
+    </view>
+    <button type="default" plain="true" class="btn">保存为图片</button>
+  </view>
+</view>

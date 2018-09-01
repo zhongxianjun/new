@@ -1,0 +1,25 @@
+<!-- pages/validation/validation.wxml -->
+<view class='validation'>
+  <!-- 头部引入 -->
+  <header id="header" text="验证"></header>
+  <view class='main'>
+    <form>
+      <view class='ipt_box'>
+        <input type='number' wx:for="{{inputLen}}" cursor="1" wx:key="{{index}}" disabled bindtap='onFocus' value="{{iptValue.length>=index?iptValue[index]:''}}" />
+      </view>
+      <input name="password" confirm-type="send" password="{{true}}" class='hidden_ipt' maxlength="{{inputLen}}" focus="{{isFocus}}" bindinput="setValue"></input>
+    </form>
+    <view class='scan_code'>
+      <image src='../../assets/images/icon_code.png' mode="aspectFit" />
+      扫码验证
+    </view>
+    <!-- 提示弹窗 -->
+    <view class='layer_prompt' wx:if="{{promptShowState}}">
+      <view class='content'>
+        <icon type="{{promptState?'success':'cancel'}}" size="62" color="{{promptState?'#6f5bde':'#ff4e5c'}}" />
+        <text>验证{{promptState?'成功':'失败'}}</text>
+        <view class='comfirm'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>

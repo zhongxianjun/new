@@ -1,0 +1,117 @@
+/* choose-preferential.wxss */
+.redEnvelope {
+  width: 100%;
+  overflow: hidden;
+}
+
+.redEnvelope .main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.redEnvelope .main scroll-view {
+  height: calc(100vh - 142rpx);
+}
+.redEnvelope .main .container .redEnvelope_list {
+  width: 100%;
+}
+.redEnvelope .main .container .redEnvelope_list .list {
+  width: 690rpx;
+  min-height: 261rpx;
+  margin: 30rpx auto;
+  background-image: linear-gradient(90deg, #ff4e5d 0%, #ff6043 100%),
+    linear-gradient(#ffffff, #ffffff);
+  box-shadow: 0px 10px 30px 0px rgba(255, 79, 92, 0.4);
+  border-radius: 20rpx;
+  position: relative;
+  animation: rightToLeft 0.2s ease;
+}
+.redEnvelope .main .container .redEnvelope_list .list image {
+  width: 148rpx;
+  height: 145rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content {
+  width: 630rpx;
+  position: absolute;
+  left: 8rpx;
+  top: 90rpx;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content .text {
+  font-size: 48rpx;
+  color: #fff;
+  margin: 0 20rpx;
+}
+.redEnvelope .main .container .redEnvelope_list .list .content input {
+  width: 200rpx;
+  height: 108rpx;
+  background-color: #ea3322;
+  border-radius: 20rpx;
+  padding: 0 10rpx;
+  font-size: 70rpx;
+  color: #fff;
+  text-align: center;
+}
+.redEnvelope .main .container .redEnvelope_list .list icon {
+  position: absolute;
+  right: 27rpx;
+  top: 24rpx;
+}
+.redEnvelope .main .container .redEnvelope_list .list .popUp {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.redEnvelope .main .container .redEnvelope_list .list .popUp .close {
+  width: 191rpx;
+  min-height: 75rpx;
+  line-height: 75rpx;
+  background-color: #ffffff;
+  box-shadow: 0px 10rpx 30rpx 0rpx rgba(255, 79, 92, 0.4);
+  border-radius: 38rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #ff3b29;
+  animation: landing 0.2s ease;
+}
+.redEnvelope .main .footer {
+  width: 100%;
+  font-size: 28rpx;
+  color: #ff4e5c;
+  text-align: center;
+  margin-top: 90rpx;
+  margin-bottom: 36rpx;
+}
+
+@keyframes landing {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes rightToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
